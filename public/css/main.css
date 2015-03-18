@@ -1,0 +1,113 @@
+/* CSS Document */
+
+
+.navB{ position:fixed;  top:0; left:0;  background:#FFFFFF; border-bottom:#ccc solid 1px; padding:10px 0 10px 0; display:block; min-width:900px;   }
+
+
+
+h5{ font-family:"微软雅黑"; color:#666666; font-size:18px; position:relative; padding-left:30px; padding-bottom:20px;}
+h5 span{ display:block;height:50px;width:50px; margin:0 auto;border-radius:50px;background:#999;text-align:center;line-height:50px; position:absolute;top:-5px; left:-30px; font-size:24px; color:#fff;}
+.on span{ background:#4bc86a; }
+
+.m_main{ width:1000px; margin:100px auto; position:relative;}
+.m_main .box{ border-radius:10px;}
+
+.h_main{ width:940px;margin:100px auto;background: #f3f3f3;border:solid 1px #CCCCCC;border-radius:10px;box-shadow:#999 1px 3px 3px; position:relative;}
+
+.h_main h1{ height:100px;  line-height:100px;
+		text-align:center;
+		font-family:"微软雅黑"; font-weight:normal;
+		font-size:30px;
+		color:#336699;}
+.h_nav{ width:80%; margin:0 auto; height:130px; position:relative; }
+.h_nav .tt{ text-align:center; line-height:26px; border:1px solid #BCB9B9; background:#F9F7F7; padding:20px;color:#000; }
+.h_nav .tt,.h_nav .tt a{font-family:'微软雅黑'; font-size:16px; }
+.h_nav .tt a{ color:#336699;}
+.h_nav .t{ position:absolute; top:0; left:0;z-index:20;}
+.h_nav .t li{ float:left;margin-right:40px;overflow:hidden;font-family:"微软雅黑"; width:90px; }
+.h_nav .t li a{ text-decoration:none;}
+.h_nav .t li span{ display:block;height:40px;width:40px; margin:0 auto;border-radius:40px;background:#999;text-align:center;line-height:40px;font-size:16px;color:#FFF;}
+.h_nav .t li p{ text-align:center; padding-top:20px; color:#999999;}
+.h_nav .t .end{ margin-right:0;}
+.h_nav .t .on span{ background:#4bc86a;}
+.h_nav .l{ width:88%; border-top:1px solid #A7A7A7; margin:0 auto; clear:both;position:absolute; top:18px; left:26px; }
+
+.hSubject{width:600px; text-align:center; margin:10px auto; height:80px;}
+.hSubject span{font-size:24px; font-family:'微软雅黑';  }
+.hSubject input{width:320px; height:24px; padding:0 5px 0 5px; line-height:24px; border:1px solid #ccc;}
+.err{ border:1px solid #990000;}
+.hSubject .errMsg{ font-size:12px; font-family:'宋体'; color:#990000; padding-left:95px; display:block; padding-top:5px;width:320px; display:none; }
+
+.h_img,.h_img1,.h_img2,.h_img3,.h_img4{ position:absolute; }
+.h_img{ top:150px; left:445px; background:url(../images/j1.jpg) no-repeat; width:45px; height:28px;}
+.h_img1{ top:320px;  left:645px; background:url(../images/j2.jpg) no-repeat; width:36px; height:37px;}
+.h_img2{ top:550px; left:445px; background:url(../images/j3.jpg) no-repeat; width:45px; height:28px;}
+.h_img3{  top:700px; left:245px; background:url(../images/j4.jpg) no-repeat; width:38px; height:44px;}
+.h_img4{  top:900px; left:445px; background:url(../images/j1.jpg) no-repeat; width:63px; height:39px;}
+.h_box .h_img{ left:370px;}
+.h_box .h_img1{left:570px;}
+.h_box .h_img2{left:370px;}
+.h_box .h_img3{left:170px;}
+.h_box .h_img4{left:370px;}
+				
+.h_box{ position:relative;  margin:0 0 0 90px; padding-bottom:80px;}
+.lit{ position:relative;}
+.gqtz{position:absolute; top:5px; left:270px; color:#336699;}
+.h_one,.h_four,.h_five{ width:420px;}
+.h_one textarea,.h_two textarea,.h_four textarea,.h_three textarea,.h_five textarea,.h_six textarea{
+	 width:338px; height:220px; border:1px solid #ccc; padding:20px; line-height:20px; margin-top:-10px; overflow:auto;
+}
+.h_one textarea,.h_four textarea{ width:320px;}
+.h_three textarea{ height:89px;}
+.h_five textarea{ border:none;}
+.h_p1q p{ font-size:12px; width:100%; padding-top:10px; color:#999; }
+.h_p1q p input{ border:1px solid #ccc; width:70px; height:24px; padding:0 5px 0 5px; }
+
+.h_p1{ width:100%; text-align:center; margin-left:-30px; margin-top:30px; margin-bottom:30px;}
+
+.h_five .h_m_box{ width:360px;   line-height:20px; margin-top:-10px; background:#c2c2c2;}
+.h_five .h_m_box td{ background:#fff; padding:5px;}
+.h_five .h_m_box .i1{ border:none; width:50px;}
+.h_five .h_m_box .i2{ border:none;}
+.h_five .h_m_box .bg1{ background:#dfdfdf; text-align:right; color:#666666;}
+.h_five .h_m_box textarea{ margin:0; height:154px; padding:5px;}
+
+.h_six .h_6box{  line-height:20px; margin-top:-10px; background:#c2c2c2;}
+.h_six .h_6box td{ background:#fff; padding:5px;}
+.h_six .h_6box .bg1{ background:#dfdfdf; text-align:right; color:#666666;}
+.h_six .h_6box textarea{ margin:0; height:100px; padding:0; border:none; width:325px; }
+#h_6box_te{ height:130px;}
+#h_t_xia{ width:100%; border:none;}
+#h_6box_teq{ height:140px;}
+
+
+
+.textarea{width:338px; height:220px; border:1px solid #ccc; padding:20px; line-height:20px; margin-top:-10px; overflow:auto; background:#FFF;}
+.h_one .textarea,.h_four .textarea{ width:320px;}
+.h_three .textarea{ height:89px;}
+.h_five .textarea{ border:none;}
+.h_p1q{ line-height:24px; padding-top:10px;}
+.h_p1q .input{ border:1px solid #ccc; width:80px; height:24px; display:inline-block; background:#FFF; padding:0 5px 0 5px;}
+
+.h_main1{ height:300px; width:500px; z-index:98; position:fixed; top:30%; left:50%; margin-left:-260px; display:none;}
+#close{ position:absolute; top:40px; right:-10px; cursor:pointer; color:#FFF; font-weight:bold; height:20px; width:20px; background:#F00; text-align:center; line-height:20px; border-radius:20px;}
+.h_box_big{ position:absolute; height:100%; width:100%; background-color:#000; top:0; left:0; z-index:90; opacity:0.3; display:none;}
+
+.btnAplay{ position: absolute; right:-200px; top:200px; width:133px; height:133px; color:#3399cc; background:url(../images/btnAplay.png) no-repeat; text-indent:-999px; overflow:hidden; display:none; }
+
+.btnShare{position:absolute; bottom:-70px; right:20px;}
+/* 评论相关 */
+.p_Box{ width:90%;}
+.p_Box h2{height:32px; line-height:32px; font-size:24px; font-family:'微软雅黑'; font-weight:normal; padding-bottom:10px;}
+.p_Box .list .item{ border-top:1px solid #999; line-height:24px;}
+.p_Box textarea{width:760px; height:100px;}
+.p_Box input{ padding:5px 10px 5px 10px;}
+.p_Box .status{ color:#999;}
+
+.shareItem{ padding:50px 0 0 60px; height:510px;}
+.shareItem .fl span{ font-size:24px;font-family:'微软雅黑'; display:block; padding-bottom:10px;}
+.shareItem  textarea{width:360px; height:320px; border:1px solid #ccc; padding:20px 10px 20px 10px; line-height:20px;  overflow:auto;}
+#insertfile{border:1px solid #ccc; padding:10px; cursor:pointer;}
+#insertfile img{ vertical-align:middle; margin:0 10px 0 10px;}
+
+

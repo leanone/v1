@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<!--[if IE 8]>
+<html xmlns="http://www.w3.org/1999/xhtml" class="ie8 wp-toolbar"  lang="zh-CN">
+<![endif]-->
+<!--[if !(IE 8) ]><!-->
+<html xmlns="http://www.w3.org/1999/xhtml" class="wp-toolbar"  lang="zh-CN">
+<!--<![endif]-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>后台管理 &lsaquo; 精一学社</title>
+<script type="text/javascript" src="{$base_url}public/js/jquery.min.js"></script>
+<style>
+	.nav{ width:100%; clear:both; padding-bottom:10px;}
+	.nav a{ float:left; margin-right:20px; color:#333; text-decoration:none;}
+	.nav .on{ font-weight:bolder;}
+	.nav .fr{ float:right;}
+	.clear{ clear:both;}
+	td{ background:#F9F7F7}
+</style>
+
+</head>
+<body>
+{include file="admin/nav.html"}
+时间段选择
+开始时间：<input type="text" value="">-结束时间<input type="text" value=""><input type="button" value="分析">
+{$data}
+
+
+
+</body>
+</html>

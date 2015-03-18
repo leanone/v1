@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<!--[if IE 8]>
+<html xmlns="http://www.w3.org/1999/xhtml" class="ie8 wp-toolbar"  lang="zh-CN">
+<![endif]-->
+<!--[if !(IE 8) ]><!-->
+<html xmlns="http://www.w3.org/1999/xhtml" class="wp-toolbar"  lang="zh-CN">
+<!--<![endif]-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>后台管理 &lsaquo; 精一学社</title>
+<script type="text/javascript" src="{$base_url}public/js/jquery.min.js"></script>
+<style>
+	.nav{ width:100%; clear:both; padding-bottom:10px;}
+	.nav a{ float:left; margin-right:20px; color:#333; text-decoration:none;}
+	.nav .on{ font-weight:bolder;}
+	.nav .fr{ float:right;}
+	.clear{ clear:both;}
+	td{ background:#F9F7F7}
+</style>
+
+</head>
+<body>
+{include file="admin/nav.html"}
+
+总会员数：{$num1}<br/>
+今日新增会员数：{$num2}
+<div style="background:#000000">
+<table width="100%" border="0" cellpadding="5" cellspacing="1">
+  <tbody>
+    <tr>
+      <td align="center">账户名称</td>
+      <td align="center">昵称</td>
+      <td align="center">注册日期</td>
+      <td align="center">注册IP</td>
+      <td align="center">登录次数</td>
+      <td align="center">注册类型</td>
+      <td align="center">是否上传画布</td>
+      <td align="center">是否提交申请</td>
+      <td align="center">相关操作</td>
+    </tr>
+    
+{if $userList}
+{foreach from=$userList item=user}
+    <tr>
+      <td align="center">{$user.userName}</td>
+      <td align="center">{$user.NickName}</td>
+      <td align="center">{$user.regTime}</td>
+      <td align="center">{$user.regIP}</td>
+      <td align="center">{$user.LoginTimes}</td>
+      <td align="center"></td>
+      <td align="center">{if $user.hasHuabu eq '1'}有{/if}</td>
+      <td align="center">{if $user.hasProject eq '1'}有{/if}</td>
+      <td align="center"></td>
+    </tr>
+{/foreach}
+{else}
+  <tr>
+    <td colspan="12" class="ac">您目前没有添加关键词哦~</td>
+    </tr>
+{/if}
+
+
+  </tbody>
+</table>
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,19 @@
+<div class="navB">
+
+    <a href="http://leanone.cn/" class="logo"></a>
+    <div class="fl">
+        <a href="http://leanone.cn/wp/?page_id=49" target="_blank">关于学社</a>
+        <a href="http://leanone.cn/wp/" target="_blank">精益学习</a>
+        <a href="http://leanone.cn/download/"  target="_blank">画布下载</a>
+        <a href="http://leanone.cn/wp/?page_id=187" target="_blank">精益创想计划</a>
+    </div>
+    <div class="fr {if $userLogined }logined{/if}">
+    	{if $userLogined }
+       		 <a>欢迎您,{$user.NickName}</a> <a href="{$base_url}huabu/my">我的画布</a> <a href="{$base_url}user/infoUpdate">更新资料</a> <a href="{$base_url}user/logout">退出登陆</a>
+        {else}
+        	<a href="javascript:reg();" >注册</a>
+        	<a href="javascript:login();">登录</a>
+        {/if}
+    </div>
+	
+</div>

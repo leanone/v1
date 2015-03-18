@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>{$data.shareWord}</title>
+{include file="header.html"}
+</head>
+<body>
+
+<img src="{$data.sharePic}" width="400" height="360" alt="" id="sharePic"  style="display:none"/>
+
+{include file="navB.html"}
+<div class="h_main">
+
+	<h1>{if $data.Subject}{$data.Subject}{else}好点子画布{/if}</h1>
+	
+
+    <div class="clear"></div>
+<div style=" float:left; margin-left:400px; padding:20px 0 50px 0;">
+<div class="bshare-custom icon-medium-plus">
+<a title="分享到QQ空间" class="bshare-qzone"></a>
+<a title="分享到新浪微博" class="bshare-sinaminiblog"></a>
+<!--
+<a title="分享到人人网" class="bshare-renren"></a>
+<a title="分享到腾讯微博" class="bshare-qqmb"></a>
+<a title="分享到朋友网" class="bshare-qqxiaoyou"></a>
+<a title="分享到豆瓣网" class="bshare-douban"></a>
+-->
+<a title="分享到微信" class="bshare-weixin"></a>
+<a title="更多平台" class="bshare-more bshare-more-icon more-style-addthis"></a></div><script src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=2c9fb966-ed24-4cd7-aba5-55671695e3b4&amp;pophcol=1&amp;lang=zh" type="text/javascript" charset="utf-8"></script><script src="http://static.bshare.cn/b/bshareC0.js" type="text/javascript" charset="utf-8"></script> 
+
+
+	
+</div>	
+       <div class="clear"></div> 
+    <div class="h_box">
+    	<div class="h_img"></div>
+        <div class="h_img1"></div>
+        <div class="h_img2"></div>
+        <div class="h_img3"></div>
+        <div class="h_img4"></div>
+     
+   		 <a name="step1"></a>
+          <div class="lit h_one fl">
+              <h5 class="on"><span>1</span>{$language.huabu_step1}</h5>
+              <div class="textarea">
+                  {$data.h_one}
+              </div>
+              
+              <div class="h_p1q">
+                 {$language.huabu_step1_txt1}<div class="input">{$data.h_one_text}</div>{$language.huabu_step1_txt2}
+              </div>
+          </div>
+          
+         <a name="step2"></a>
+          <div class="lit h_two fl">
+              <h5 class="on"><span>2</span>{$language.huabu_step2}</h5>
+              <div class="textarea">{$data.h_two}</div>
+          
+          </div>
+ 		  <div class="clear h55"></div>
+     	 <a name="step4"></a>
+          <div class="lit h_four fl">
+              <h5 class="on"><span>4</span>{$language.huabu_step4}</h5>
+     		  <div class="textarea">{$data.h_four}</div>
+            
+   
+          </div>
+          
+      	 <a name="step3"></a>
+          <div class="lit h_three fl">
+              <h5 class="on"><span>3</span>{$language.huabu_step3}</h5>
+             <div class="textarea">
+              {$data.h_three_one}
+
+
+              </div>
+              <div class="textarea">
+              
+                {$data.h_three_two}
+
+
+              </div>
+          
+          </div>
+          
+          
+          <div class="clear h85"></div>
+          <a name="step5"></a>
+           <div class="lit h_five fl">
+              <h5 class="on"><span>5</span>{$language.huabu_step5}</h5>
+              <a href="http://leanone.cn/guquan/" target="_blank" class="gqtz">{$language.txt_guquan}</a>
+              <div  class="h_m_box">
+         
+                  <table  border="0" cellpadding="1" cellspacing="1">
+                        <tr>
+                          <td width="142" class="bg1">{$language.huabu_step5_txt1}</td>
+                          <td width="62"  >{if $data.h_five_one eq '0'}否{else}是{/if}</td>
+                          <td width="75"  class="bg1">{$language.huabu_step5_txt2}</td>
+                          <td width="68">{$data.h_five_two}</td>
+                        </tr>
+                        <tr>
+                          <td class="bg1">{$language.huabu_step5_txt3}</td>
+                          <td colspan="3">{$data.h_five_three}</td>
+                        </tr>
+                        <tr>
+                          <td  class="bg1">{$language.huabu_step5_txt4}</td>
+                          <td colspan="3">{$data.h_five_four}</td>
+                        </tr>
+                        <tr>
+                          <td height="175" colspan="4" valign="top">
+                            {$data.h_five_five}
+                          </td>
+                        </tr>
+                   </table>
+             </div>
+              
+
+          </div>
+          
+          <a name="step6"></a>
+          <div class="lit h_six fl">
+              <h5 class="on"><span>6</span>{$language.huabu_step6}</h5>
+              <div class="h_6box">
+                  <table  border="0" cellpadding="0" cellspacing="1" width="370">
+                        <tr>
+                          <td width="11%" class="bg1">{$language.huabu_step6_txt3}</td>
+                          <td width="89%"  height="125" valign="top">{$data.h_six_one}</td>
+                        </tr>
+                        <tr>
+                          <td  class="bg1">{$language.huabu_step6_txt4}</td>
+                          <td  height="125" valign="top">{$data.h_six_two}</td>
+                        </tr>
+                   </table>
+              </div>
+          
+          </div>
+
+    
+
+    <div class="clear h55"></div>
+
+<div style=" float:left; margin-left:320px; padding:50px 0 10px 0;">
+<div class="bshare-custom icon-medium-plus">
+<a title="分享到QQ空间" class="bshare-qzone"></a>
+<a title="分享到新浪微博" class="bshare-sinaminiblog"></a>
+<!--
+<a title="分享到人人网" class="bshare-renren"></a>
+<a title="分享到腾讯微博" class="bshare-qqmb"></a>
+<a title="分享到朋友网" class="bshare-qqxiaoyou"></a>
+<a title="分享到豆瓣网" class="bshare-douban"></a>
+-->
+<a title="分享到微信" class="bshare-weixin"></a>
+<a title="更多平台" class="bshare-more bshare-more-icon more-style-addthis"></a></div><script src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=2c9fb966-ed24-4cd7-aba5-55671695e3b4&amp;pophcol=1&amp;lang=zh" type="text/javascript" charset="utf-8"></script><script src="http://static.bshare.cn/b/bshareC0.js" type="text/javascript" charset="utf-8"></script> 
+</div>	
+    <div class="clear h55"></div>   
+    
+    
+    
+    
+    
+    
+    
+<!---------------画布开始----------------->
+<link rel="stylesheet" href="{$base_url}public/css/commnet.css" media="screen" />
+<div  class="p_Box">
+	<input type="hidden" value="{$data.mID}" name="Hmid">
+    <input type="hidden" name="Huid" value="{$data.Uid}">
+    <input type="hidden" name="Hcid" value="{$data.CookieID}">
+    
+
+
+<div class="clearfix comment-wrap" id="wrapOuter">
+
+
+    
+		
+        <div class="comment-form"  data-rid="0" data-pid="0" data-id="0">
+        
+                <div class="hd clearfix">
+                    <span href="#url" class="count"><em>{$pinglunNum}</em>条评论</span>
+                    <span class="tip">我有话说</span>
+           			<!--
+                    {if $user and $user.Email eq ''}
+                    <div class="tip-bd">
+                        <span class="msg">赶快去<a href="javascript:;" >绑定邮箱</a>吧，绑定后即可通过邮箱收到评论动态消息哦</span>
+                        <span class="tobd" style="display:none">
+                        	  <input type="text" value="" name="email" placeholder="请输入要接收消息的邮箱" size="32" />
+                              <input type="button" value="绑定" class="btn1">
+                              <input type="button" value="放弃" class="btn2"></span>
+                    </div>
+                    {/if}
+                    -->
+                    
+                </div>
+                <div class="bd">
+                    <div class="editor">
+                        <div class="inner"><textarea  class="box" autocomplete="off" placeholder="请输入评论" value=""></textarea></div>
+                        <span class="arrow"></span>
+                    </div>
+                    <div class="user">
+                        <div class="form-head">
+                            <a href="javascript:;"  title=""><img src="{$base_url}public/face/male_180.png" alt=""></a>
+                        </div>
+                    </div>
+                  
+                </div>
+                <div class="ft clearfix">
+                    <div class="face"><a href="javascript:;" class="trigger" action-type="face-toggle">表情</a></div>
+                    <a  href="javascript:;" action-type="tip-toggle" class="btn btn-red btn-disabled">发布</a>
+                    <div class="login"></div>
+                </div>
+                
+        </div>
+        {literal}
+        <script>
+        	$(".tip-bd .msg a").click(function(){
+				$(".tip-bd .msg").hide()
+				$(".tip-bd .tobd").show()	
+			})
+			
+			$(".tip-bd .btn1").click(function(){
+				v=$("input[name=email]").val()
+				if(isEmail(v)){
+					//提交绑定
+					$.get("user/bindEmail",{"email":v})
+				}
+			})
+			$(".tip-bd .btn2").click(function(){
+				$(".tip-bd .msg").show()
+				$(".tip-bd .tobd").hide()
+			})
+        </script>   
+        {/literal} 
+        <div class="comment-list">
+   
+      
+            <div class="hot-loading loading"><a href="javascript:;"></a></div>
+            <div class="list">
+
+            
+    
+            
+{if $pinglunList}
+{foreach from=$pinglunList item=pinglun}
+
+   
+      <div class="item clearfix">
+       <!-- 头像 start -->
+       		<div class="head"><img src="{$pinglun.FaceUrl}"></div> 
+       <!-- 头像 end -->
+       <!-- 内容 start -->
+            <div class="cont">
+                <div class="info">
+                    <span class="name">{$pinglun.pubName}</span>
+                    <span class="time">[{$pinglun.sAddTime}]</span>
+                </div>
+                <div class="txt">
+                	{$pinglun.Content}
+                    
+                </div>
+               {if $pinglun.Uid eq $uid}{else}
+                <div class="action"  data-rid="0"  data-pid="{$pinglun.ID}"  data-id="{$pinglun.ID}">
+                    <span class="btns">
+                        <a class="vote"  title="赞"  href="javascript:;"><span>赞<em>{$pinglun.favorNum}</em></span></a>
+                        <a class="reply" href="javascript:;" hidefocus="">回复</a>
+                    </span>
+                </div>
+                {/if}
+                
+            </div>
+        <!-- 内容 end -->   
+      	    <div class="sitemList">
+        {if $pinglun.ChildList}
+        	
+        	{foreach from=$pinglun.ChildList item=pinglunChild}
+             <div class="sitem clearfix">
+                <div class="head"><img src="{$pinglunChild.FaceUrl}"></div> 
+                <div class="cont">
+                    <div class="info">
+                        <span class="name">{$pinglunChild.pubName}</span>
+                        <span class="time">[{$pinglunChild.sAddTime}]</span>
+                    </div>
+                    <div class="txt">
+                    {$pinglunChild.Content}
+                    {if $pinglunChild.Pid > 0 and $pinglunChild.Prid > 0}
+                   		//<a href="javascript:;">@{$pinglunChild.Puname}</a>：{$pinglunChild.Ptxt}
+                    {/if}
+              	   
+                    </div>
+                    {if $pinglunChild.Uid eq $uid}{else}
+                    <div class="action"  data-rid="{$pinglun.ID}"  data-pid="{$pinglun.ID}"  data-id="{$pinglunChild.ID}">
+                        <span class="btns">
+                            <a class="vote" title="赞"  href="javascript:;"><span>赞<em>{$pinglunChild.favorNum}</em></span></a>
+                            <a class="reply"  href="javascript:;" hidefocus="">回复</a>
+                        </span>
+                    </div>
+                    {/if}
+                    
+                </div>  
+            </div>
+            {/foreach}
+        {/if}   
+             </div>
+            
+            
+        </div>
+
+        
+        
+        
+{/foreach}
+ {else}
+   <div class="item itemNo">
+       暂无评论，抢沙发
+    </div>
+ {/if}           
+
+        
+       
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+</div>
+
+<script src="{$base_url}public/js/comment.js"></script>
+
+<div style="display:none" id="content">   
+        <div class="reply-form-wrap" >
+         
+              <div class="reply-form-top"><em>◆</em><span>◆</span></div>
+              <div class="comment-form reply-form" data-rid="0" data-pid="0" data-id="0">
+              
+                    <div class="hd"></div>
+                    <div class="bd">
+                        <div class="editor">
+                             <div class="inner"><textarea  class="box" autocomplete="off" placeholder="" value="" style="height: 60px; overflow: auto;"></textarea></div>
+                        </div>
+                    </div>
+                    <div class="ft clearfix" >
+                        <div class="face"><a href="javascript:;" class="trigger">表情</a></div>
+                        <a href="javascript:;"  class="btn btn-red btn-disabled">发布</a>
+                    </div>
+            
+              </div>
+        </div>
+
+</div>  
+<!---------------画布结束----------------->
+</div>
+
+</div>
+</div>
+
+
+    
+{include file="copyright.html"}
+<div class="comment-face">
+    <ul>
+       	  <li><A title="国旗" href="javascript:void(0)" data-text="[国旗]"><img  src="{$base_url}public/face/flag_thumb.gif"></A></li>
+          <li><A title="走你" href="javascript:void(0)" data-text="[走你]"><img  src="{$base_url}public/face/zouni_thumb.gif"></A></li>
+          <li><A title="笑哈哈" href="javascript:void(0)" data-text="[笑哈哈]"><img src="{$base_url}public/face/lxhwahaha_thumb.gif"></A></li>
+          <li><A title="江南style" href="javascript:void(0)" data-text="[江南style]"><img src="{$base_url}public/face/gangnamstyle_thumb.gif"></A></li>
+          <li><A title="吐血" href="javascript:void(0)" data-text="[吐血]"><img src="{$base_url}public/face/lxhtuxue_thumb.gif"></A></li>
+          <li><A title="好激动" href="javascript:void(0)" data-text="[好激动]"><img src="{$base_url}public/face/lxhjidong_thumb.gif"></A></li>
+          <li><A title="lt切克闹" href="javascript:void(0)" data-text="[lt切克闹]"><img src="{$base_url}public/face/ltqiekenao_thumb.gif"></A></li>
+          <li><A title="moc转发" href="javascript:void(0)" data-text="[moc转发]"><img src="{$base_url}public/face/moczhuanfa_thumb.gif"></A></li>
+          <li><A title="ala蹦" href="javascript:void(0)" data-text="[ala蹦]"><img src="{$base_url}public/face/alabeng_thumb.gif"></A></li>
+          <li><A title="gst耐你" href="javascript:void(0)" data-text="[gst耐你]"><img src="{$base_url}public/face/gstnaini_thumb.gif"></A></li>
+          <li><A title="xb压力" href="javascript:void(0)" data-text="[xb压力]"><img src="{$base_url}public/face/xbyali_thumb.gif"></A></li>
+          <li><A title="din推撞" href="javascript:void(0)" data-text="[din推撞]"><img src="{$base_url}public/face/dintuizhuang_thumb.gif"></A></li>
+          <li><A title="草泥马" href="javascript:void(0)" data-text="[草泥马]"><img src="{$base_url}public/face/shenshou_thumb.gif"></A></li>
+          <li><A title="神马" href="javascript:void(0)" data-text="[神马]"><img src="{$base_url}public/face/horse2_thumb.gif"></A></li>
+          <li><A title="浮云" href="javascript:void(0)" data-text="[浮云]"><img src="{$base_url}public/face/fuyun_thumb.gif"></A></li>
+          <li><A title="给力" href="javascript:void(0)" data-text="[给力]"><img src="{$base_url}public/face/geili_thumb.gif"></A></li>
+          <li><A title="围观" href="javascript:void(0)" data-text="[围观]"><img src="{$base_url}public/face/wg_thumb.gif"></A></li>
+          <li><A title="威武" href="javascript:void(0)" data-text="[威武]"><img src="{$base_url}public/face/vw_thumb.gif"></A></li>
+          <li><A title="熊猫" href="javascript:void(0)" data-text="[熊猫]"><img src="{$base_url}public/face/panda_thumb.gif"></A></li>
+          <li><A title="兔子" href="javascript:void(0)" data-text="[兔子]"><img src="{$base_url}public/face/rabbit_thumb.gif"></A></li>
+          <li><A title="奥特曼" href="javascript:void(0)" data-text="[奥特曼]"><img src="{$base_url}public/face/otm_thumb.gif"></A></li>
+          <li><A title="囧" href="javascript:void(0)" data-text="[囧]"><img  src="{$base_url}public/face/j_thumb.gif"></A></li>
+          <li><A title="互粉" href="javascript:void(0)" data-text="[互粉]"><img src="{$base_url}public/face/hufen_thumb.gif"></A></li>
+          <li><A title="礼物" href="javascript:void(0)" data-text="[礼物]"><img src="{$base_url}public/face/liwu_thumb.gif"></A></li>
+          <li><A title="呵呵" href="javascript:void(0)" data-text="[呵呵]"><img src="{$base_url}public/face/smilea_thumb.gif"></A></li>
+          <li><A title="嘻嘻" href="javascript:void(0)" data-text="[嘻嘻]"><img src="{$base_url}public/face/tootha_thumb.gif"></A></li>
+          <li><A title="哈哈" href="javascript:void(0)" data-text="[哈哈]"><img src="{$base_url}public/face/laugh_thumb.gif"></A></li>
+          <li><A title="可爱" href="javascript:void(0)" data-text="[可爱]"><img src="{$base_url}public/face/tza_thumb.gif"></A></li>
+          <li><A title="可怜" href="javascript:void(0)" data-text="[可怜]"><img src="{$base_url}public/face/kl_thumb.gif"></A></li>
+          <li><A title="挖鼻屎" href="javascript:void(0)" data-text="[挖鼻屎]"><img src="{$base_url}public/face/kbsa_thumb.gif"></A></li>
+          <li><A title="吃惊" href="javascript:void(0)" data-text="[吃惊]"><img src="{$base_url}public/face/cj_thumb.gif"></A></li>
+          <li><A title="害羞" href="javascript:void(0)" data-text="[害羞]"><img src="{$base_url}public/face/shamea_thumb.gif"></A></li>
+          <li><A title="挤眼" href="javascript:void(0)" data-text="[挤眼]"><img src="{$base_url}public/face/zy_thumb.gif"></A></li>
+          <li><A title="闭嘴" href="javascript:void(0)" data-text="[闭嘴]"><img src="{$base_url}public/face/bz_thumb.gif"></A></li>
+          <li><A title="鄙视" href="javascript:void(0)" data-text="[鄙视]"><img src="{$base_url}public/face/bs2_thumb.gif"></A></li>
+          <li><A title="爱你" href="javascript:void(0)" data-text="[爱你]"><img src="{$base_url}public/face/lovea_thumb.gif"></A></li>
+          <li><A title="泪" href="javascript:void(0)" data-text="[泪]"><img src="{$base_url}public/face/sada_thumb.gif"></A></li>
+          <li><A title="偷笑" href="javascript:void(0)" data-text="[偷笑]"><img src="{$base_url}public/face/heia_thumb.gif"></A></li>
+          <li><A title="亲亲" href="javascript:void(0)" data-text="[亲亲]"><img src="{$base_url}public/face/qq_thumb.gif"></A></li>
+          <li><A title="生病" href="javascript:void(0)" data-text="[生病]"><img src="{$base_url}public/face/sb_thumb.gif"></A></li>
+          <li><A title="太开心" href="javascript:void(0)" data-text="[太开心]"><img src="{$base_url}public/face/mb_thumb.gif"></A></li>
+          <li><A title="懒得理你" href="javascript:void(0)" data-text="[懒得理你]"><img src="{$base_url}public/face/ldln_thumb.gif"></A></li>
+          <li><A title="右哼哼" href="javascript:void(0)" data-text="[右哼哼]"><img src="{$base_url}public/face/yhh_thumb.gif"></A></li>
+          <li><A title="左哼哼" href="javascript:void(0)" data-text="[左哼哼]"><img src="{$base_url}public/face/zhh_thumb.gif"></A></li>
+          <li><A title="嘘" href="javascript:void(0)" data-text="[嘘]"><img src="{$base_url}public/face/x_thumb.gif"></A></li>
+          <li><A title="衰" href="javascript:void(0)" data-text="[衰]"><img src="{$base_url}public/face/cry_thumb.gif"></A></li>
+          <li><A title="委屈" href="javascript:void(0)" data-text="[委屈]"><img src="{$base_url}public/face/wq_thumb.gif"></A></li>
+          <li><A title="吐" href="javascript:void(0)" data-text="[吐]"><img src="{$base_url}public/face/t_thumb.gif"></A></li>
+          <li><A title="打哈欠" href="javascript:void(0)" data-text="[打哈欠]"><img src="{$base_url}public/face/k_thumb.gif"></A></li>
+          <li><A title="抱抱" href="javascript:void(0)" data-text="[抱抱]"><img src="{$base_url}public/face/bba_thumb.gif"></A></li>
+          <li><A title="怒" href="javascript:void(0)" data-text="[怒]"><img src="{$base_url}public/face/angrya_thumb.gif"></A></li>
+          <li><A title="疑问" href="javascript:void(0)" data-text="[疑问]"><img src="{$base_url}public/face/yw_thumb.gif"></A></li>
+          <li><A title="馋嘴" href="javascript:void(0)" data-text="[馋嘴]"><img src="{$base_url}public/face/cza_thumb.gif"></A></li>
+          <li><A title="拜拜" href="javascript:void(0)" data-text="[拜拜]"><img src="{$base_url}public/face/88_thumb.gif"></A></li>
+          <li><A title="思考" href="javascript:void(0)" data-text="[思考]"><img src="{$base_url}public/face/sk_thumb.gif"></A></li>
+          <li><A title="汗" href="javascript:void(0)" data-text="[汗]"><img src="{$base_url}public/face/sweata_thumb.gif"></A></li>
+          <li><A title="困" href="javascript:void(0)" data-text="[困]"><img src="{$base_url}public/face/sleepya_thumb.gif"></A></li>
+          <li><A title="睡觉" href="javascript:void(0)" data-text="[睡觉]"><img src="{$base_url}public/face/sleepa_thumb.gif"></A></li>
+          <li><A title="钱" href="javascript:void(0)" data-text="[钱]"><img src="{$base_url}public/face/money_thumb.gif"></A></li>
+          <li><A title="失望" href="javascript:void(0)" data-text="[失望]"><img src="{$base_url}public/face/sw_thumb.gif"></A></li>
+          <li><A title="酷" href="javascript:void(0)" data-text="[酷]"><img src="{$base_url}public/face/cool_thumb.gif"></A></li>
+          <li><A title="花心" href="javascript:void(0)" data-text="[花心]"><img src="{$base_url}public/face/hsa_thumb.gif"></A></li>
+          <li><A title="哼" href="javascript:void(0)" data-text="[哼]"><img src="{$base_url}public/face/hatea_thumb.gif"></A></li>
+          <li><A title="鼓掌" href="javascript:void(0)" data-text="[鼓掌]"><img src="{$base_url}public/face/gza_thumb.gif"></A></li>
+          <li><A title="晕" href="javascript:void(0)" data-text="[晕]"><img src="{$base_url}public/face/dizzya_thumb.gif"></A></li>
+          <li><A title="悲伤" href="javascript:void(0)" data-text="[悲伤]"><img src="{$base_url}public/face/bs_thumb.gif"></A></li>
+          <li><A title="抓狂" href="javascript:void(0)" data-text="[抓狂]"><img src="{$base_url}public/face/crazya_thumb.gif"></A></li>
+          <li><A title="黑线" href="javascript:void(0)" data-text="[黑线]"><img src="{$base_url}public/face/h_thumb.gif"></A></li>
+          <li><A title="阴险" href="javascript:void(0)" data-text="[阴险]"><img src="{$base_url}public/face/yx_thumb.gif"></A></li>
+          <li><A title="怒骂" href="javascript:void(0)" data-text="[怒骂]"><img src="{$base_url}public/face/nm_thumb.gif"></A></li>
+          <li><A title="心" href="javascript:void(0)" data-text="[心]"><img src="{$base_url}public/face/hearta_thumb.gif"></A></li>
+          <li><A title="伤心" href="javascript:void(0)" data-text="[伤心]"><img src="{$base_url}public/face/unheart_thumb.gif"></A></li>
+          <li><A title="猪头" href="javascript:void(0)" data-text="[猪头]"><img src="{$base_url}public/face/pig_thumb.gif"></A></li>
+          <li><A title="ok" href="javascript:void(0)" data-text="[ok]"><img src="{$base_url}public/face/ok_thumb.gif"></A></li>
+          <li><A title="耶" href="javascript:void(0)" data-text="[耶]"><img src="{$base_url}public/face/ye_thumb.gif"></A></li>
+          <li><A title="good" href="javascript:void(0)" data-text="[good]"><img src="{$base_url}public/face/good_thumb.gif"></A></li>
+          <li><A title="不要" href="javascript:void(0)" data-text="[不要]"><img src="{$base_url}public/face/no_thumb.gif"></A></li>
+          <li><A title="赞" href="javascript:void(0)" data-text="[赞]"><img src="{$base_url}public/face/z2_thumb.gif"></A></li>
+          <li><A title="来" href="javascript:void(0)" data-text="[来]"><img src="{$base_url}public/face/come_thumb.gif"></A></li>
+          <li><A title="弱" href="javascript:void(0)" data-text="[弱]"><img src="{$base_url}public/face/sad_thumb.gif"></A></li>
+          <li><A title="蜡烛" href="javascript:void(0)" data-text="[蜡烛]"><img src="{$base_url}public/face/lazu_thumb.gif"></A></li>
+          <li><A title="蛋糕" href="javascript:void(0)" data-text="[蛋糕]"><img src="{$base_url}public/face/cake_thumb.gif"></A></li>
+          <li><A title="钟" href="javascript:void(0)" data-text="[钟]"><img src="{$base_url}public/face/clock_thumb.gif"></A></li>
+          <li><A title="话筒" href="javascript:void(0)" data-text="[话筒]"><img src="{$base_url}public/face/m_thumb.gif"></A></li>
+    </ul>
+</div>
+</body>
+</html>

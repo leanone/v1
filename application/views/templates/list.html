@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>{$language.site_title}</title>
+{include file="header.html"}
+<link rel="stylesheet" href="{$base_url}public/css/zhaunshi.css" media="screen" />
+</head>
+<body>
+{include file="navB.html"}
+<div class="navSelect"> 
+    <div>
+    <a href="javascript:;" class="ico_6"><span></span><em class="up"></em></a>
+    <a href="javascript:;" class="ico_5"><span></span><em class="up"></em></a>
+    <a href="javascript:;" class="ico_4"><span></span><em class="up"></em></a>
+    <a href="{$base_url}huabu/add" class="creat">+ 创建画布</a>
+    </div>
+</div>
+<script>
+	var mID="{$mID}"
+</script>
+{literal}
+<script>
+
+
+
+
+	var visitNum  ="asc"
+	var favorNum  ="asc"
+	var commentNum="asc"
+	objV={"visitNum":visitNum,"favorNum":favorNum,"commentNum":commentNum}
+	
+	function iniUpDown(v,obj){
+		if(objV[v]=="asc"){
+			objV[v]="desc"
+			obj.removeClass("up").addClass("down")
+		}else{
+			objV[v]="asc"
+			obj.removeClass("down").addClass("up")
+		}
+		
+		loadData(objV["visitNum"],objV["favorNum"],objV["commentNum"],v)
+	}
+
+	//按照阅读排序
+	$(".navSelect .ico_6").click(function(){
+		iniUpDown("visitNum",$(this).children("em"))
+		
+	})
+	//按照点赞排序
+	$(".navSelect .ico_5").click(function(){
+		iniUpDown("favorNum",$(this).children("em"))
+		
+	})
+	//按照评论排序
+	$(".navSelect .ico_4").click(function(){
+		iniUpDown("commentNum",$(this).children("em"))
+		
+	})
+	
+	function loadData(v1,v2,v3,v){
+		//显示loading
+		
+		$.get(baseUrl+"huabu/getList?v1="+v1+"&v2="+v2+"&v3="+v3+"&v="+v,{},function(d){
+			$(".z_main div ul").html("")
+			for(i=0;i<d.length;i++){
+				str='<li id="'+d[i].mID+'">';
+				str+='<div class="z_main_onetop">';
+				str+='<h4>'+d[i].Subject+'</h4>';
+				str+='<p>'+d[i].shareWord+'</p>';
+				str+='</div>';
+				str+='<div class="z_main_onebottom">';
+				str+='<h4>'+d[i].Subject+'</h4>';
+				str+='<div class="z_dl"><a href="'+baseUrl+'huabu/show/'+d[i].mID+'.html" target="_blank" class="ico_1">';
+				str+='<em></em><span>查看('+d[i].visitNum+')</span></a>';
+				str+='<a href="'+baseUrl+'huabu/show/'+d[i].mID+'.html#pl" target="_blank" class="ico_2">';
+				str+='<em></em><span>评论('+d[i].commentNum+')</span>';
+				str+='</a><a href="javascript:zan('
+				str+="'"+d[i].mID+"'"
+				str+=');" class="ico_3"><em></em><span>赞('+d[i].favorNum+')</span></a></div></div>';
+				str+='<img src="'+d[i].sharePic+'" width="400" height="360" alt=""/></li>';
+				//alert(str)
+				$(".z_main div ul").append(str)
+				
+			}
+		
+			
+		},"jsonp")
+		
+	}
+
+</script>
+{/literal}
+<div class="z_main" style="padding-top:20px;">
+    	<div>
+        <ul>
+ {if $listData}
+    {foreach from=$listData item=listItem}
+    
+      	<li id="{$listItem.mID}">
+            <div class="z_main_onetop">
+                <h4>{$listItem.Subject}</h4>
+                <p>{$listItem.shareWord}</p>
+                
+            </div>
+            <div class="z_main_onebottom">
+                <h4>{$listItem.Subject}</h4>
+                <div class="z_dl">
+                <a href="{$base_url}huabu/show/{$listItem.mID}.html" target="_blank" class="ico_1">
+                    <em></em><span>查看({$listItem.visitNum})</span>
+                </a>
+              
+               
+                
+                <a href="{$base_url}huabu/show/{$listItem.mID}.html#pl" target="_blank" class="ico_2">
+                    <em></em><span>评论({$listItem.commentNum})</span>
+                </a>
+                 <a href="javascript:zan('{$listItem.mID}');" class="ico_3">
+                    <em></em><span>赞({$listItem.favorNum})</span>
+                </a>
+               </div> 
+            </div>
+         	<img src="{$listItem.sharePic}" width="400" height="360" alt=""/> 
+      	</li>
+                
+    {/foreach}
+{else}
+ 	没有数据
+{/if}        
+        </ul>
+    	</div>
+</div>
+{literal}
+<script>
+	var isZan=false
+	function zan(mID){
+		if(!isZan){
+		$.get(baseUrl+"huabu/zan",{"mID":mID},function(d){
+	
+			v=$("#"+mID+" .ico_3 span").html()
+			v=v.replace("赞(","")
+			v=v.replace(")","")
+			v=Math.floor(v)+1
+			$("#"+mID+" .ico_3 span").html("赞("+v+")")
+			 
+		},"jsonp")
+		isZan=true
+		}
+	}
+	
+	
+	$(".z_main li").each(function(){
+		$(this).hover(function(){
+			$(this).children(".z_main_onetop").animate({"top":0},200)
+			//alert($(this).children(".z_main_onetop").html())
+			$(this).children(".z_main_onebottom").children("h4").fadeOut()
+		},function(){
+			var z_main_onetop=$(this).children(".z_main_onetop")
+			var h4=$(this).children(".z_main_onebottom").children("h4")
+			setTimeout(function(){
+				z_main_onetop.animate({"top":-300},200)
+				h4.fadeIn()
+			},200)
+			
+		})	
+	})
+
+</script>     
+{/literal}
+    
+{include file="copyright.html"}
+    
+
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script src="http://libs.baidu.com/jquery/1.7.2/jquery.min.js"></script>
+<script>
+var baseUrl="{$base_url}",Uid="{$uid}"
+</script>
+<script src="test/{$base_url}public/js/comm.js"></script>
+
+</head>
+
+<body>
+ 真实姓名  realname
+ 微信号    weichat
+ 是否全职  isquan
+ 团队人数  rnum
+项目名称   subject
+ 联系电话  tel
+ 邮箱      email
+  <br>
+ //ID,mID,Uid,realName,weiChat,isQuan,Subject,rNum,Tel,Email
+ <br>
+ <input type="text" name="ID" value="{$cInof.ID}" >
+真实姓名<input type="text" name="realname" value="{$cInof.realName}" >
+<br>
+微信号<input type="text" name="weichat" value="{$cInof.weiChat}" >
+<br>
+是否全职<input type="radio" name="isquan" value="1" {if $cInof.isQuan eq 1}checked{/if}>全职<input name="isquan" type="radio" value="0" {if $cInof.isQuan eq 0}checked{/if}>兼职
+<br>
+团队人数<input type="text" name="rnum" value="{$cInof.rNum}" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"> 
+<br>
+项目名称<input type="text" name="subject" value="{$cInof.Subject}">
+<br>
+联系电话<input type="text" name="tel" value="{$cInof.Tel}" >
+<br>
+邮箱<input type="text" name="email" value="{$cInof.Email}" >
+<br>
+<a href="javascript:;" class="btn">上传</a>
+<a href="http://localhost/web/user/reg" target="_blank">去注册</a>
+{literal} 
+<script>
+getCid()  //cookie用户ID
+
+var data={}
+
+$(".btn").click(function(){
+	
+	data.cid=Cid
+	data.id=Math.floor($("input[name=ID]").val())
+	
+	data.realname=$("input[name=realname]").val()
+	data.weichat=$("input[name=weichat]").val()
+	data.isquan=$("input[name=isquan]").val()
+	data.rnum=$("input[name=rnum]").val()
+	data.subject=$("input[name=subject]").val()
+	data.tel=$("input[name=tel]").val()
+	
+	if(data.realname=="" || data.weichat=="" || data.isquan=="" || data.rnum=="" || data.subject=="" || data.tel==""){
+		alert("请填写全部信息哦，亲~")
+		return;
+	}
+	//电话监测
+	
+	if(!isPhoneOrMobile(data.tel)){
+		alert("亲，你的联系电话有误~，请留下手机号或者座机号呗~");	
+		$("input[name=tel]").focus()
+		return;
+	}
+	data.email=$("input[name=email]").val()
+	//邮箱监测
+	if(!isEmail(data.email)){
+		alert("亲，您的邮箱格式有误~");	
+		$("input[name=email]").focus()
+		return;
+	}
+
+	$.get(baseUrl+"project/addSave",data,function(d){
+		alert(d.flag)
+	},"json")
+})
+
+
+
+
+</script>
+{/literal} 
+</body>
+</html>

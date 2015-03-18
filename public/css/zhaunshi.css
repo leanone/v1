@@ -1,0 +1,66 @@
+/* CSS Document */
+
+body,div,p,ul,ol,li,dl,dt,dd,h1,h2,h3,h4,h5,h6,table,tr,td,form,input,select,textarea,span,img,a,em,strong,*{ margin:0; padding:0;}
+body{ font-family:"微软雅黑"; font-size:12px; color:#000000;}
+ul,ol,li{ list-style:none;}
+h1,h2,h3,h4,h5,h6{ font-size:14px;}
+input,select,textarea{ vertical-align:middle;}
+img{ border:none; vertical-align:middle;}
+a{ text-decoration:none; color:#333333;}
+a:hover{ color:#009999;}
+.clear{ clear:both; height:0px; width:0px; overflow:hidden;}
+
+.z_main{ min-width:890px;padding-top:100px;margin:0 auto;}
+@media (min-width:1760px) {
+	.z_main{ width:1760px;}
+}
+
+@media (min-width:1320px)  and (max-width:1760px){
+	.z_main{ width:1320px;}
+}
+@media (min-width:600px) and (max-width:1320px) {
+	.z_main{ width:880px;}
+}
+
+
+.z_main ul li{ height:360px; width:400px; overflow:hidden;  float:left; margin:20px; position:relative; border-radius:10px; }
+
+.z_main_onetop,.z_main_onebottom{width:100%;  position:absolute; background:rgba(0,0,0,0.5)!important;filter:Alpha(opacity=50); background:#fff;left:0; z-index:3}
+.z_main_onetop{ height:250px;  top:-300px;}
+.z_main_onebottom{height:110px; width:100%;  bottom:0; }
+
+.z_main_onetop h4,.z_main_onebottom h4{font-size:18px; color:#cfeb0f; margin-left:20px;}
+.z_main_onetop h4 { height:30px; line-height:30px;  margin-top:20px;}
+.z_main_onebottom h4{ height:50px; line-height:50px; }
+
+
+.z_main_onetop p{ width:90%; margin:0 auto; text-indent:24px; font-size:14px; letter-spacing:3px; line-height:24px; margin-top:10px; color:#FFF; font-weight:bold;}
+
+
+.z_main_onebottom a{  color:#FFF; text-align:center;}
+.ico_1{ float:left; margin-left:10px;}
+.ico_2{ float:right; }
+.ico_3{ float:right; }
+.z_main_onebottom a{ width:100px; text-align:center;   }
+.ico_1 em,.ico_2 em,.ico_3 em{ background:url(../images/icon2.png) no-repeat;  height:35px;display:block; margin:0 auto;}
+.ico_1 em{ background-position:-70px 0; width:50px; }
+.ico_2 em{ background-position:-35px 0;width:35px;}
+.ico_3 em{ background-position:0 0;width:35px;}
+.z_dl{ position:absolute; top:50px; width:100%;}	
+.z_main_onebottom .ico_edit{float:left;width:26px; margin-left:30px; }
+.z_main_onebottom .ico_edit em{ background:url(../images/ico_editor.png) no-repeat; width:26px; height:35px;display:block;} 
+
+.navSelect{ height:50px; background:#f5f5f5; width:100%; padding-top:100px; text-align:center;}
+.navSelect div{ width:420px; margin:0 auto; background:#A08C8C;}
+.navSelect a{  display:inline-block; float:left; color:#336699;}
+.navSelect .creat{ text-decoration:none; border-bottom:1px solid #336699; padding-bottom:1px; padding-top:10px;  }
+.ico_4,.ico_5,.ico_6{ margin-right:30px;}
+.ico_4 span,.ico_5 span,.ico_6 span,.navSelect .up,.navSelect .down{ background:url(../images/icon2.png) no-repeat;  height:35px; display:inline-block; }
+.ico_4 span{ background-position:-175px 0; width:35px;}
+.ico_5 span{ background-position:-140px 0;width:35px;}
+.ico_6 span{ background-position:-210px 0;width:50px;}
+.navSelect .up{ background-position:-280px 0; width:35px;}
+.navSelect .down{ background-position:-315px 0; width:35px;}
+
+
+

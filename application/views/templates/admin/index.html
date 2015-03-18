@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<!--[if IE 8]>
+<html xmlns="http://www.w3.org/1999/xhtml" class="ie8 wp-toolbar"  lang="zh-CN">
+<![endif]-->
+<!--[if !(IE 8) ]><!-->
+<html xmlns="http://www.w3.org/1999/xhtml" class="wp-toolbar"  lang="zh-CN">
+<!--<![endif]-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>后台管理 &lsaquo; 精一学社</title>
+<script type="text/javascript" src="{$base_url}public/js/jquery.min.js"></script>
+<style>
+	.nav{ width:100%; clear:both; padding-bottom:10px;}
+	.nav a{ float:left; margin-right:20px; color:#333; text-decoration:none;}
+	.nav .on{ font-weight:bolder;}
+	.nav .fr{ float:right;}
+	.clear{ clear:both;}
+	td{ background:#F9F7F7}
+</style>
+
+</head>
+<body>
+{include file="admin/nav.html"}
+
+申请总数：{$num1}<br/>
+今日新增申请数：{$num2}
+<div style="background:#000000">
+<table width="100%" border="0" cellpadding="5" cellspacing="1">
+  <tbody>
+    <tr>
+      <td align="center">真实姓名</td>
+      <td align="center">微信号</td>
+      <td align="center">是否全职</td>
+      <td align="center">团队人数</td>
+      <td align="center">项目名称</td>
+      <td align="center">联系电话</td>
+      <td align="center">邮箱</td>
+      <td align="center">添加时间</td>
+      <td align="center">添加IP</td>
+      <td align="center">来源</td>
+      <td align="center">关键词</td>
+      <td align="center">相关操作</td>
+    </tr>
+    
+{if $projectList}
+{foreach from=$projectList item=key}
+    <tr>
+      <td align="center">{$key.realName}</td>
+      <td align="center">{$key.weiChat}</td>
+      <td align="center">{$key.isQuan}</td>
+      <td align="center">{$key.rNum}</td>
+      <td align="center">{$key.Subject}</td>
+      <td align="center">{$key.Tel}</td>
+      <td align="center">{$key.Email}</td>
+      <td align="center">{$key.AddTime}</td>
+      <td align="center">{$key.AddIP}</td>
+      <td align="center">{$key.utm_source}</td>
+      <td align="center">{$key.utm_content}</td>
+      <td align="center">&nbsp;</td>
+    </tr>
+{/foreach}
+{else}
+  <tr>
+    <td colspan="12" class="ac">您目前没有添加关键词哦~</td>
+    </tr>
+{/if}
+
+
+  </tbody>
+</table>
+</div>
+
+
+
+</body>
+</html>

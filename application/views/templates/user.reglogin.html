@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>{$language.site_title}</title>
+{include file="header.html"}
+<script src="{$base_url}public/js/user.js"></script>
+</head>
+<body>
+<div class="navB">
+
+    <a href="http://leanone.cn/" class="logo"></a>
+    <div class="fl">
+        <a href="http://leanone.cn/wp/?page_id=49" target="_blank">{$language.nav_1}</a>
+        <a href="http://leanone.cn/wp/" target="_blank">{$language.nav_2}</a>
+        <a href="http://leanone.cn/download/"  target="_blank">{$language.nav_3}</a>
+        <a href="http://leanone.cn/wp/?page_id=187" target="_blank">{$language.nav_4}</a>
+    </div>
+    <div class="fr">
+        {if $userLogined }
+             <a>欢迎您,{$user.NickName}</a> <a href="{$base_url}huabu/my">我的画布</a><a href="{$base_url}user/logout">{$language.user_logout}</a>
+        {else}
+            <a href="javascript:reg();" >{$language.user_reg}</a>
+            <a href="javascript:login();">{$language.user_login}</a>
+        {/if}
+    </div>
+
+</div>
+
+   
+    <div class="main" >
+        <div class="m_left">
+           
+            <div class="regL"> 
+                <ul class="reg"  {if $act eq "login"}style="display:none;"{/if}>
+                    <ol><li class="t">{$language.user_reg}</li></ol>
+                 	<ol>
+                    	<li class="w120">{$language.user_name}</li>
+                        <li><input type="text"  name="username" class="i" placeholder="{$language.user_name_require}" onChange="checkUname(this.value)" value="" /><p>{$language.user_name_err}</p></li>
+                    </ol>
+                    <ol>
+                    	<li class="w120">{$language.user_pass}</li>
+                        <li> <input type="password" name="userpass"  class="i" placeholder="{$language.user_pass_require}"/><p>{$language.user_pass_err}</p></li>
+                    </ol>
+                    <ol>
+                    	<li class="w120">{$language.user_repass}</li>
+                        <li><input type="password" name="reuserpass"  class="i"><p>{$language.user_repass_err}</p></li>
+                    </ol>
+                    <ol>
+                    	<li class="sbtn"><input type="button" value="{$language.user_creat}" class="subBtn"/></li>
+                    </ol>
+                </ul>
+                 <ul class="login"  {if $act eq "reg"}style="display:none;"{/if}>
+                    <ol><li class="t">{$language.user_login}</li></ol>
+                 	<ol>
+                    	<li class="w120">{$language.user_name}</li>
+                        <li><input type="text" name="username" class="i"/><p>{$language.user_name_err}</p></li>
+                    </ol>
+                    <ol>
+                    	<li class="w120">{$language.user_pass}</li>
+                        <li> <input type="password" name="userpass" class="i"/><p>{$language.user_pass_err}</p></li>
+                    </ol>
+                  
+                    <ol class="s">
+                    	<li class="w130"></li><li class="pt5"><input type="checkbox" name="auto"/></li><li> 一周内自动登录</li>
+                        <li class="pl120"><a href="javascript:alert('{$language.coming}');">{$language.user_forgot}</a></li>
+                    </ol>
+                     <ol>
+                    	<li class="sbtn"><input type="button" value="{$language.btn_sureLogin}" class="subBtn"/></li>
+                    </ol>
+                </ul>
+                <div class="san">
+                	<span>社交账号登录:</span> 
+                    <a href="javascript:;" class="qq"></a>
+                    <a href="javascript:;" class="sina"></a>
+                    <a href="javascript:alert('{$language.coming}');;" class="weixin"></a>
+                    <div class="fr toLogin"><span>已有账号，</span><a href="javascript:login();">直接登录</a></div>
+     				<div class="fr toReg" style="display:none"><span>没有账号，</span><a href="javascript:reg();">马上注册</a></div>
+     
+                </div>
+            </div>
+                
+                
+                
+        </div>
+        
+        <div class="m_right">
+            <img src="{$base_url}public/images/erweima_07.jpg" style="margin-top:30px;" />
+            <div>扫一扫<br/>
+           关注我们</div>
+        </div>
+        <div class="clear"></div>
+      <div class="copyright">
+        
+        	@2014-2015 LeanOneAcademy，All Right Reserved. 京ICP备14056568号.
+
+
+        </div>
+    
+      
+    </div>
+
+    
+
+</body>
+</html>
