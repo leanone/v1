@@ -5,10 +5,10 @@ class user extends CI_Controller {
 	public function __construct()
     {
         parent::__construct();
-		$this->load->language(array('site')); 
+		
 		$this->smarty->assign( 'language',$this->lang->language);
 
-        $this->load->model('userm');
+        $this->load->model('sitem');
         $this->load->helper('url'); 
          
 		 

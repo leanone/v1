@@ -5,15 +5,17 @@ class Welcome extends CI_Controller {
 	public function __construct()
     {
         parent::__construct();
-		$this->load->language(array('site')); 
+		
 		$this->smarty->assign( 'language',$this->lang->language);
 		
-        $this->load->model('userm');
+   
 
         $this->load->helper('url'); 
          
 		$this->baseUrl=$this->config->item("base_url");
+		
 		$this->smarty->assign( 'base_url',$this->baseUrl);
+		
 		
 		$this->Uid=intval($this->input->cookie("uid"));
 		$this->Cid=$this->input->cookie("cid");
@@ -75,7 +77,7 @@ class Welcome extends CI_Controller {
 	public function test2(){
 		header("Content-type: text/html; charset=utf-8"); 
 		//加载方式一，加载时不需要传入_lang 
-		$this->load->language(array('site')); 
+		
 		print_r($this->lang->language);
 		echo $this->lang->line('menu_system_title'); 
 		//echo $this->lang->;

@@ -1,44 +1,35 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class huabu extends CI_Controller {
+class huabu extends MY_Controller {
 
 	public function __construct()
     {
         parent::__construct();
-		$this->load->language(array('site')); 
-		$this->smarty->assign( 'language',$this->lang->language);
+		parent::ini();
 		
 		
-		$this->load->database();
-		$this->load->model("projectm");
-		$this->load->model("userm");
 		
-		$this->load->model("huabum");
+		
+		
+	
+	
+		
 		$this->load->model("pinglunm");
+	
 		
-		$this->base_url=$this->config->item("base_url");
-		
-	    $this->smarty->assign( 'base_url',$this->base_url);
-		
-		//用户ID
-		
-		
-		$this->Uid=intval($this->input->cookie("uid"));
-		$this->Cid=$this->input->cookie("cid");
-		
-		$this->smarty->assign( 'uid',$this->Uid);
-		$this->smarty->assign( 'cid',$this->Cid);
-		$this->smarty->assign( 'uname',$this->input->cookie("uname"));
-		
-		$this->Logined=$this->input->cookie("logined")==true?true:false;
-		$this->smarty->assign( 'userLogined',$this->Logined);
-		
-		$this->smarty->assign( 'user',$this->userm->getInfo($this->Uid));
+	
 		
 	
 		
 	
 		
+	}
+	public function test11(){
+		echo $this->base_url;
+		echo "<br/>";
+		echo $this->Uid;
+		echo "<br/>";
+		echo $this->Cid;
 	}
 	public function index()
 	{

@@ -20,14 +20,13 @@ class project extends CI_Controller {
 	public function __construct()
     {
         parent::__construct();
-		$this->load->language(array('site')); 
+		
 		$this->smarty->assign( 'language',$this->lang->language);
 		
 		
 		$this->load->database();
 		$this->load->model("projectm");
-		$this->load->model("userm");
-		$this->load->model("huabum");
+	
 	   
 
 		$this->base_url=$this->config->item("base_url");

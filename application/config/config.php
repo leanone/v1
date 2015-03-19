@@ -2,7 +2,7 @@
 
 
 //网站根目录
-$config['base_url']	= 'http://localhost/web/';
+$config['base_url']	= 'http://localhost/leanone/';
 //首页
 $config['index_page'] = 'index.php';
 

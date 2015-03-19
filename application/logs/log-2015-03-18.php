@@ -38,3 +38,10 @@ ERROR - 2015-03-18 07:13:10 --> Severity: Notice  --> Undefined index: userData 
 ERROR - 2015-03-18 07:13:10 --> Severity: Notice  --> Trying to get property of non-object E:\xampp\htdocs\web\application\views\templates_c\4a5f9deec3798ea8a3fbea023432833d979ddf6d.file.header.html.php 62
 ERROR - 2015-03-18 07:13:24 --> Severity: Notice  --> Undefined index: userData E:\xampp\htdocs\web\application\views\templates_c\4a5f9deec3798ea8a3fbea023432833d979ddf6d.file.header.html.php 62
 ERROR - 2015-03-18 07:13:24 --> Severity: Notice  --> Trying to get property of non-object E:\xampp\htdocs\web\application\views\templates_c\4a5f9deec3798ea8a3fbea023432833d979ddf6d.file.header.html.php 62
+ERROR - 2015-03-18 08:33:16 --> Query error: Unknown column 'VisitNum' in 'field list'
+ERROR - 2015-03-18 08:33:16 --> Language file contains no data: language/cn/db_lang.php
+ERROR - 2015-03-18 08:33:16 --> Could not find the language line "db_error_heading"
+ERROR - 2015-03-18 08:33:17 --> Query error: Unknown column 'VisitNum' in 'field list'
+ERROR - 2015-03-18 08:33:17 --> Language file contains no data: language/cn/db_lang.php
+ERROR - 2015-03-18 08:33:17 --> Could not find the language line "db_error_heading"
+ERROR - 2015-03-18 08:33:20 --> Severity: Notice  --> Constant CI_VERSION already defined E:\xampp\htdocs\leanone\application\controllers\test.php 13

@@ -50,7 +50,14 @@ class CI_Controller {
 
 		$this->load->initialize();
 		
+		
+		
 		log_message('debug', "Controller Class Initialized");
+	}
+	public function ini(){
+		
+	
+		
 	}
 
 	public static function &get_instance()

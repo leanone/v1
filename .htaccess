@@ -4,4 +4,4 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 
 RewriteCond $1 !^(index\.php|public|wp|robots\.txt)
-RewriteRule ^(.*)$ /web/index.php/$1 [L]
+RewriteRule ^(.*)$ /leanone/index.php/$1 [L]
