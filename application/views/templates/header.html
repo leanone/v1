@@ -15,12 +15,11 @@
 <script>
 var baseUrl="{$base_url}"
 
-var Cid="{$cid}"
-var Uid="{$uid}"
-var Uname="{$uname}"
-//用户资料
-var userData={$userData};
 
+var userData={$userData};
+var Uid=userData.Uid
+var Cid=userData.CookieID
+var Uname=userData.NickName
 	
 
 </script>

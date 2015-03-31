@@ -11,33 +11,34 @@ class MY_Controller extends CI_Controller{
 		$this->Uid     = intval($this->input->cookie("uid"));
 		$this->Uname   = $this->input->cookie("uname");
 		$this->Cid     = $this->input->cookie("cid");
-		$this->Logined = $this->input->cookie("logined")==true?true:false;
+		$this->isLogin = $this->input->cookie("logined")==true?true:false;
 		
 		$this->smarty->assign( 'language',$this->lang->language);
 	    $this->smarty->assign( 'base_url',$this->base_url);
+		$this->smarty->assign( 'userLogined',$this->isLogin);
 		
-		$this->smarty->assign( 'uid',$this->Uid);
-		$this->smarty->assign( 'cid',$this->Cid);
-		$this->smarty->assign( 'uname',$this->Uname);
-		$this->smarty->assign( 'userLogined',$this->Logined);
-		
-		$user=$this->userm->getInfo($this->Uid);
-		if($this->Logined){
+		$this->user=$this->userm->getInfo($this->Uid);
+		$arr=array();
+		if($this->isLogin){
 			
-			$arr=array();
-			$arr["Uid"]=$user["Uid"];
-			$arr["mID"]=$user["mID"];
-			$arr["CookieID"]=$user["CookieID"];
-			$arr["NickName"]=$user["NickName"];
-			$arr["FaceUrl"] =$user["FaceUrl"];
-			$arr["hasHuabu"]=$user["hasHuabu"];
+			
+			$arr["Uid"]=$this->user["Uid"];
+			$arr["mID"]=$this->user["mID"];
+			$arr["CookieID"]=$this->user["CookieID"];
+			$arr["NickName"]=$this->user["NickName"];
+			$arr["FaceUrl"] =$this->user["FaceUrl"];
+			$arr["hasHuabu"]=$this->user["hasHuabu"];
 		
-			$this->smarty->assign('userData',json_encode($arr));
+			
 		}else{
-			$this->smarty->assign('userData','{}');
+			$arr["Uid"]=0;
+			$arr["CookieID"]=$this->Cid;
+			$arr["NickName"]="";
+			
 		}
-		$this->smarty->assign('user',$user);
-		
+		$this->smarty->assign('userData',json_encode($arr));
+		$this->smarty->assign('user',$this->user);
+		$this->smarty->assign('nav_id',0);
 		
 		
 	}

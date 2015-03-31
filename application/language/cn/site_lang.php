@@ -5,7 +5,7 @@ $lang['site_description'] = '国内首家以精益创业方法为主线的线上
 
 $lang['nav_1']="关于学社";
 $lang['nav_2']="精益学习";
-$lang['nav_3']="画布下载";
+$lang['nav_3']="好点子画布";
 $lang['nav_4']="精益创想计划";
 $lang['nav_my']="我的画布";
 
@@ -77,7 +77,7 @@ $lang['huabu_step3_txt2']  ="规模估算有2种方式：按潜在用户量（2C
 
 $lang['huabu_step5']  ="你的团队";
 $lang['huabu_step5_txt1']  ="你是否全职？";
-$lang['huabu_step5_txt2']  ="现团队人数";
+$lang['huabu_step5_txt2']  ="现团队人数：";
 $lang['huabu_step5_txt3']  ="拿到投资后多久全职：";
 $lang['huabu_step5_txt4']  ="现在缺什么合伙人：";
 $lang['huabu_step5_require'] ="你毕业的大学，工作过的NB公司，做过的NB事儿，和任何你干过值得你骄傲的事儿~";

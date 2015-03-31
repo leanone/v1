@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2015-03-17 10:12:33
+<?php /* Smarty version Smarty-3.1.15, created on 2015-03-19 10:43:42
          compiled from "application\views\templates\user.reglogin.html" */ ?>
 <?php /*%%SmartyHeaderCode:201355507d9734c5511-56806726%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'a2ee9c5d130309f03e909b4b8045d100860d8f33' => 
     array (
       0 => 'application\\views\\templates\\user.reglogin.html',
-      1 => 1426583552,
+      1 => 1426758219,
       2 => 'file',
     ),
   ),
@@ -135,8 +135,8 @@ user/logout"><?php echo $_smarty_tpl->tpl_vars['language']->value['user_logout']
                     <a href="javascript:;" class="sina"></a>
                     <a href="javascript:alert('<?php echo $_smarty_tpl->tpl_vars['language']->value['coming'];?>
 ');;" class="weixin"></a>
-                    <div class="fr toLogin"><span>已有账号，</span><a href="javascript:login();">直接登录</a></div>
-     				<div class="fr toReg" style="display:none"><span>没有账号，</span><a href="javascript:reg();">马上注册</a></div>
+                    <div class="fr toLogin" style="display:none"><span>已有账号，</span><a href="javascript:login();">直接登录</a></div>
+     				<div class="fr toReg"><span>没有账号，</span><a href="javascript:reg();">马上注册</a></div>
      
                 </div>
             </div>

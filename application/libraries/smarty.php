@@ -17,6 +17,7 @@
      function CI_Smarty()
      {
         parent::Smarty();
+		
  
         log_message('debug', "Smarty Class Initialized");
      }
@@ -27,6 +28,7 @@
  
          $this->compile_dir = APPPATH . "views/templates_c";
          $this->template_dir = APPPATH . "views/templates";
+		 $this->muteExpectedErrors();
          $this->assign( 'APPPATH', APPPATH );
          $this->assign( 'BASEPATH', BASEPATH );
 		 

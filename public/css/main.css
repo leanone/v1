@@ -35,7 +35,7 @@ h5 span{ display:block;height:50px;width:50px; margin:0 auto;border-radius:50px;
 .hSubject{width:600px; text-align:center; margin:10px auto; height:80px;}
 .hSubject span{font-size:24px; font-family:'微软雅黑';  }
 .hSubject input{width:320px; height:24px; padding:0 5px 0 5px; line-height:24px; border:1px solid #ccc;}
-.err{ border:1px solid #990000;}
+
 .hSubject .errMsg{ font-size:12px; font-family:'宋体'; color:#990000; padding-left:95px; display:block; padding-top:5px;width:320px; display:none; }
 
 .h_img,.h_img1,.h_img2,.h_img3,.h_img4{ position:absolute; }

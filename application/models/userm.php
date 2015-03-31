@@ -34,7 +34,7 @@ LastLoginIP
 		$query=$this->db->query("select * from db_cookie_user where CookieID='". $d["CookieID"]."'");
 	
 		if($query->num_rows()){
-			$this->db->query("update   db_cookie_user set VisitNum=VisitNum+1 where CookieID='". $d["CookieID"]."'");
+			$this->db->query("update   db_cookie_user set visitNum=visitNum+1 where CookieID='". $d["CookieID"]."'");
 		}else{
 			
 			$this->db->set($d);
@@ -83,17 +83,9 @@ LastLoginIP
 		if($query->num_rows()){
 			$row = $query->row_array();
 		
-			if($row["Flag"]==2){
-				$row["typeName"]	="教练";
-			}elseif($row["Flag"]==1){
-				$row["typeName"]	="VIP用户";
-			}else{
-				$row["typeName"]	="普通用户";
-			}
-			if($row["NickName"]==""){
-				$row["NickName"]=$row["userName"];
-			}
-			return $row;
+			
+			
+			return $this->iniUserData($row);
 		}else{
 			return false;	
 		}
@@ -104,27 +96,28 @@ LastLoginIP
 	 }
 	 /*根据$data update session*/
 	 function updateUserSession($row,$userAuto=false){
-		 /*
-	    $d=array();
-		$d["logined"]=true;
-		$d["Uid"]=$row->Uid;
-	    $d["uname"]=$row->userName;
-		
-	    $this->session->set_userdata($d);
-		*/
+
 		if($userAuto){
 			$t=7*24*60*60;
 		}else{
 			$t=3*60*60;  	
 		}
+	
 		$this->input->set_cookie("logined",true,$t);
-		$this->input->set_cookie("uid",$row->Uid,$t); 
-		$this->input->set_cookie("uname",$row->NickName,$t); 
+		$this->input->set_cookie("uid",$row["Uid"],$t); 
+		$this->input->set_cookie("uname",$row["NickName"],$t); 
+		
+		$sql="update db_user set LastLoginTime='".now()."',LastLoginIP='".ip()."',LoginTimes=LoginTimes+1 ";
+		if($row["Uid"]==""){
+			$sql.=",mID='".substr(md5($row["Uid"]),8,16)."'";
+		}
+		$sql.="where Uid=".$row["Uid"];
+		$this->db->query($sql);
 		
 		//登陆后更新CookieID、HuabuID
 		$cid=$this->input->cookie("cid");
-		$this->updateCookieUid($cid,$row->Uid);
-		$this->updateHuabuUid($cid,$row->Uid);
+		$this->updateCookieUid($cid,$row["Uid"]);
+		$this->updateHuabuUid($cid,$row["Uid"]);
 	 }
 	 function getLogin($uid){
 		$data=array();
@@ -136,9 +129,9 @@ LastLoginIP
 		if($query->num_rows()){
 			
 			
-			$row = $query->row();
+			$row = $query->row_array();
 			$this->updateUserSession($row);
-			return true;
+			return $row;
 		}else{
 			return false;
 		}
@@ -152,19 +145,8 @@ LastLoginIP
 		$query = $this->db->get("db_user");
 		if($query->num_rows()){
 			
-			$row = $query->row();
-			$sql="update db_user set LastLoginTime='".now()."',LastLoginIP='".ip()."',LoginTimes=LoginTimes+1 ";
-			if($row->mID==""){
-				
-				$sql.=",mID='".substr(md5($row->Uid),8,16)."'";
-			}
-			$sql.="where Uid=".$row->Uid;
-			$this->db->query($sql);
-			
-			
-			if($row->NickName==""){
-				$row->NickName=$row->userName;
-			}
+			$row = $this->iniUserData($query->row_array());
+		
 			$this->updateUserSession($row,$userAuto);
 			return $row;
 		}else{
@@ -210,8 +192,8 @@ LastLoginIP
 		$this->updateHuabuUid($cid,$ID);
 	
 		
-		$this->getLogin($ID);
-		return true;
+		
+		return $this->getLogin($ID);
 	 }
 	 function editSave($data){
 		 $Uid=$this->input->cookie("uid");
@@ -245,65 +227,51 @@ LastLoginIP
 
 /*微博账号相关*/
 	function addWeibo($data){
-		/*
-		  ["id"]=> int(1442733375)
-		  ["screen_name"]=>  string(7) "AlexTUs"
-		  ["name"]=> string(7) "AlexTUs"
-		  ["province"]=> string(2) "11"
-		  ["city"]=> string(1) "8"
-		  ["location"]=> string(16) "北京 海淀区"
-		  ["description"]=> string(24) "寻找、拥有、创造"
-		  ["url"]=> string(27) "http://www.alextu.com/blog/"
-		  ["profile_image_url"]=> string(49) "http://tp4.sinaimg.cn/1442733375/50/40006208139/1"
-		  ["profile_url"]=> string(9) "523416278"
-		  ["domain"]=>  string(7) "alextus"
-		  ["weihao"]=>  string(9) "523416278"
-		  ["gender"]=> string(1) "m"
-		  ["followers_count"]=> int(68)
-		  ["friends_count"]=> int(24)
-		  ["avatar_large"]=>  string(50) "http://tp4.sinaimg.cn/1442733375/180/40006208139/1"
-		  ["avatar_hd"]=>  string(50) "http://tp4.sinaimg.cn/1442733375/180/40006208139/1"
-		 */	 
+ 
 		$query=$this->db->query("select * from db_user where WeiboID='".$data["id"]."'");
 		if($query->num_rows()){
-			//已存在
-			$row = $query->row();
-			$this->getLogin($row->Uid);
-			if($row->userName!=""&&$row->userPass!=""){
-				return 1;	
-			}else{
-				return 0;	
-			}
+			$row = $query->row_array();
+			$this->updateUserSession($row);
+			return $row;
 		}else{
-			//添加个
 			$d["NickName"]=$data["screen_name"];
-			$d["FaceUrl"]=$data["profile_image_url"];
-			$d["WeiboID"]=$data["id"];
-			$this->regSave($d);
-			return 0;	
+			$d["FaceUrl"] =$data["profile_image_url"];
+			$d["WeiboID"] =$data["id"];
+			$d["regIP"]=ip();
+			return $this->regSave($d);
+		
 		}
 		 
 	}
-	
+/*QQ账号相关*/	
 	function addQQ($data){
 		$query=$this->db->query("select * from db_user where QQopenID='".$data["openid"]."'");
 		if($query->num_rows()){
-			//已存在
-			$row = $query->row();
-			$this->getLogin($row->Uid);
-			if($row->userName!=""&&$row->userPass!=""){
-				return 1;	
-			}else{
-				return 0;	
-			}
+			$row = $query->row_array();
+			$this->updateUserSession($row);
+			return $row;
 		}else{
-			//添加个
 			$d["NickName"]=$data["nickname"];
 			$d["FaceUrl"]=$data["figureurl_1"];
 			$d["qqOpenID"]=$data["openid"];
-			
-			$this->regSave($d);
-			return 0;	
+			$d["regIP"]=ip();
+			return $this->regSave($d);	
+		}
+		
+	}
+/*微信账号相关*/	
+	function addWeixin($data){
+		$query=$this->db->query("select * from db_user where WeixinID='".$data["openid"]."'");
+		if($query->num_rows()){
+			$row = $query->row_array();
+			$this->updateUserSession($row);
+			return $row;
+		}else{
+			$d["NickName"]=$data["nickname"];
+			$d["FaceUrl"] =$data["headimgurl"];
+			$d["WeixinID"]=$data["openid"];
+			$d["regIP"]=ip();
+			return $this->regSave($d);
 		}
 		
 	}
@@ -316,8 +284,11 @@ LastLoginIP
 		$query=$this->db->query("select * from db_user order by Uid desc");
 		foreach ($query->result_array() as $row){
 			if($i<$num){
-				$row["LoginTimes"]=$row["LoginTimes"]+1;
-				$d[]=	$row; 
+				
+				
+				
+				
+				$d[]=	$this->iniUserData($row); 
 			}
 			$i++;	  
 		}
@@ -331,6 +302,38 @@ LastLoginIP
 		 $query=$this->db->query($sql);
 		 return $query->num_rows();
 		 
+	 }
+	 /*
+	 用户数据初始化
+	 */
+	 function iniUserData($row){
+		 
+		if($row["Flag"]==2){
+			$row["typeName"]	="教练";
+		}elseif($row["Flag"]==1){
+			$row["typeName"]	="VIP用户";
+		}else{
+			$row["typeName"]	="普通用户";
+		}
+		if($row["NickName"]==""){
+			$row["NickName"]=$row["userName"];
+		}
+			
+		$row["LoginTimes"]=$row["LoginTimes"]+1;
+		$row["comeFrom"]="注册";
+		if($row["QQopenID"]!=""){$row["comeFrom"]="QQ";}
+		if($row["WeiboID"]!=""){$row["comeFrom"]="微博";}
+		if($row["WeixinID"]!=""){$row["comeFrom"]="微信";}
+		if($row["Email"]=="" && isEmail($row["userName"])){
+			$row["Email"]=$row["userName"];
+		}
+		if($row["Mobile"]=="" && isMobile($row["userName"])){
+			$row["Mobile"]=$row["userName"];
+		}
+				
+		return $row;
+	
+ 
 	 }
 			
     

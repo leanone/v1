@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2015-03-17 11:17:23
+<?php /* Smarty version Smarty-3.1.15, created on 2015-03-19 11:08:58
          compiled from "application\views\templates\info.update.html" */ ?>
 <?php /*%%SmartyHeaderCode:43935507d057135e18-03826910%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'ed53e757ea2ce88791be01c19d385fd303c23e18' => 
     array (
       0 => 'application\\views\\templates\\info.update.html',
-      1 => 1426587442,
+      1 => 1426759736,
       2 => 'file',
     ),
   ),
@@ -161,7 +161,7 @@ public/images/erweima_07.jpg" style="margin-top:30px;" />
 	})
 	
 	$(".btn").click(function(){
-		location.href=baseUrl+"huabu/my"
+		location.href=baseUrl+"huabu/lists/"+userData.mID+".html"
 	})
 	
 

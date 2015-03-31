@@ -52,12 +52,12 @@ class huabum extends CI_Model {
 		 //$uid,0,24,$v1,$v2,$v3       
 		$d=array();
 		$i=0;
-		$sql ="select * from db_huabu";
+		$sql ="select * from db_huabu where Uid>0";
 		if($uid>0){
-			$sql.=" where Uid= $uid";	
+			$sql.="  and Uid= $uid";	
 		}else{
 			if($isPublic){
-				$sql.=" where isPublic=$isPublic";	
+				$sql.=" and isPublic=$isPublic";	
 			}
 		};
 		//echo $orderVisit.":".$orderFavor.":".$orderComment;
@@ -88,7 +88,15 @@ class huabum extends CI_Model {
 					}else{
 						$row["Uname"]=$row2[0]["userName"];	
 					}
-					
+					$row["Email"]=$row2[0]["Email"];	
+					$row["Mobile"]=$row2[0]["Mobile"];	
+					if($row2[0]["Email"]=="" && isEmail($row2[0]["userName"])){
+						$row["Email"]=$row2[0]["userName"];
+					}
+					if($row2[0]["Mobile"]=="" && isMobile($row2[0]["userName"])){
+						$row["Mobile"]=$row2[0]["userName"];
+					}
+						
 				}
 				$d[]=	$row; 
 			}
@@ -156,8 +164,8 @@ class huabum extends CI_Model {
 	 
 	 function getNum($t="all"){
 		 //AddTime
-		 $sql="select * from db_huabu";
-		 if($t=="today"){$sql="select * from db_huabu where AddTime>'".date("Y-m-d",time())." 00:00:00'";}
+		 $sql="select * from db_huabu where Uid>0";
+		 if($t=="today"){$sql.="  and AddTime>'".date("Y-m-d",time())." 00:00:00'";}
 		 $query=$this->db->query($sql);
 		 return $query->num_rows();
 		 
@@ -197,10 +205,6 @@ class huabum extends CI_Model {
 			return false;
 			
 	 }
-	 
-	
-	
-	
 			
     
 

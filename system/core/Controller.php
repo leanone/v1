@@ -54,11 +54,7 @@ class CI_Controller {
 		
 		log_message('debug', "Controller Class Initialized");
 	}
-	public function ini(){
-		
 	
-		
-	}
 
 	public static function &get_instance()
 	{

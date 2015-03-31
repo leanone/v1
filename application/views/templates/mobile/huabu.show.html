@@ -1,0 +1,149 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>好点子画布</title>
+
+<script src="{$base_url}public/js/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="{$base_url}public/css/mobile.css">
+<script>
+
+var phoneWidth = parseInt(window.screen.width);
+var phoneHeight = parseInt(window.screen.height);
+var phoneScale = phoneWidth/640;
+
+var ua = navigator.userAgent;
+if (/Android (\d+\.\d+)/.test(ua)){
+	var version = parseFloat(RegExp.$1);
+	// andriod 2.3
+	if(version>2.3){
+		document.write('<meta name="viewport" content="width=640, minimum-scale = '+phoneScale+', maximum-scale = '+phoneScale+', target-densitydpi=device-dpi">');
+	// andriod 2.3以上
+	}else{
+		document.write('<meta name="viewport" content="width=640, target-densitydpi=device-dpi">');
+	}
+	// 其他系统
+} else {
+	document.write('<meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi">');
+}
+
+</script>
+</head>
+
+<body>
+	<div style="display:none">
+    	 <img src="{$data.sharePic}" width="512" height="512" alt="" id="sharePic"/>
+    </div>
+    <div class="heard">
+        <p class="tac">{if $data.Subject}{$data.Subject}{else}好点子画布{/if}</p>
+    </div>
+
+    <div class="wrap">
+    
+        <div class="z_top">
+             <span>1</span><p>{$language.huabu_step1}</p>
+        </div>
+        <div class="z_one">
+            {$data.h_one}
+        </div>
+        <div class="z_msg"> 
+           <span>{$language.huabu_step1_txt1}</span>{$data.h_one_text}
+           <span class="t">({$language.huabu_step1_txt2})</span>
+        </div>
+    </div>
+    
+    <div class="wrap">
+    
+        <div class="z_top">
+            <span>2</span><p>{$language.huabu_step2}</p>
+        
+        </div>
+        <div class="z_one">
+             {$data.h_two}
+        </div>
+               
+    </div>
+    
+    
+    
+    <div class="wrap">
+    
+        <div class="z_top">
+            <span>3</span><p>{$language.huabu_step3}</p>
+        </div>
+        <div class="z_two z_two1">
+             <p>{$data.h_three_one}</p>
+        </div>
+        <div class="z_two z_two2" >
+             <p>{$data.h_three_two}</p>
+        </div>
+                 
+    </div>
+    
+    
+    <div class="wrap">
+    
+        <div class="z_top">
+             <span>4</span><p>{$language.huabu_step4}</p>
+        </div>
+
+        <div class="z_one">
+             {$data.h_four}
+        </div>
+               
+               
+    </div>
+    
+    
+    <div class="wrap">
+        <div class="z_top">
+           <span>5</span> <p>{$language.huabu_step5}</p>
+        </div>
+            
+        <div class="z_four">
+              <ul>
+                <li class="tar">{$language.huabu_step5_txt1}</li>
+                <li>{if $data.h_five_one eq '0'}否{else}是{/if}</li>
+              </ul>
+              <ul>
+                <li  class="tar">{$language.huabu_step5_txt2}</li>
+                <li>{$data.h_five_two}</li>
+              </ul>
+       
+            <ul>
+                <li class="tar">{$language.huabu_step5_txt3}</li>
+                <li>{$data.h_five_three}</li>
+              </ul>
+       
+             <ul>
+                <li class="tar">{$language.huabu_step5_txt4}</li>
+                <li>{$data.h_five_four}</li>
+              </ul>
+        </div>
+        <div class="z_four2 ">{$data.h_five_five}</div>
+                
+                
+               
+    </div>
+    
+    <div class="wrap">
+        <div class="z_top">
+           <span>6</span> <p>{$language.huabu_step6}</p>
+        </div>
+        
+        <div class="z_m5">
+            <p><span>{$language.huabu_step6_txt3}</span><b>{$data.h_six_one}</b></p>
+        </div>
+         <div class="z_m5 z_m51">
+            <p><span>{$language.huabu_step6_txt4}</span><b>{$data.h_six_two}</b></p>
+        </div>
+                
+               
+    </div>
+
+    <div class="h50"></div>
+   
+       
+
+</body>
+</html>

@@ -21,6 +21,7 @@ class mobile extends CI_Controller {
 		 header("Location: http://www.aiweibang.com/m/webapp/10844/element"); 
 	}
 	
+	
 }
 
 /* End of file welcome.php */

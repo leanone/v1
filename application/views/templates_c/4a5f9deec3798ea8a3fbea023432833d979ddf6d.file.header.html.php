@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2015-03-19 05:33:15
+<?php /* Smarty version Smarty-3.1.15, created on 2015-03-19 10:52:03
          compiled from "application\views\templates\header.html" */ ?>
 <?php /*%%SmartyHeaderCode:1612754f6b73820baf6-66798259%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '4a5f9deec3798ea8a3fbea023432833d979ddf6d' => 
     array (
       0 => 'application\\views\\templates\\header.html',
-      1 => 1426739589,
+      1 => 1426758718,
       2 => 'file',
     ),
   ),
@@ -21,9 +21,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   array (
     'language' => 0,
     'base_url' => 0,
-    'cid' => 0,
-    'uid' => 0,
-    'uname' => 0,
     'userData' => 0,
   ),
   'has_nocache_code' => false,
@@ -52,16 +49,12 @@ public/favicon.ico">
 var baseUrl="<?php echo $_smarty_tpl->tpl_vars['base_url']->value;?>
 "
 
-var Cid="<?php echo $_smarty_tpl->tpl_vars['cid']->value;?>
-"
-var Uid="<?php echo $_smarty_tpl->tpl_vars['uid']->value;?>
-"
-var Uname="<?php echo $_smarty_tpl->tpl_vars['uname']->value;?>
-"
-//用户资料
+
 var userData=<?php echo $_smarty_tpl->tpl_vars['userData']->value;?>
 ;
-
+var Uid=userData.Uid
+var Cid=userData.CookieID
+var Uname=userData.NickName
 	
 
 </script>

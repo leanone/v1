@@ -98,7 +98,10 @@ $(function() {
 				if(d.flag){
 					//alert("注册成功，赶紧去提交画布吧")
 					alert("注册成功啦，留点个人资料呗，亲")
-					location.href=baseUrl+"huabu/my"
+					location.href=baseUrl+"user/infoUpdate"
+					
+					
+					
 					
 				}else{
 					alert(d.msg)
@@ -119,8 +122,9 @@ $(function() {
 		uname=$(checkI[0]).val()
 		upass=$(checkI[1]).val()
 		isauto=$("input[name=auto]").is(":checked")
-	
+	    
 		if(uname==""){
+		
 			$(checkI[0]).parent().addClass("err")
 			$(checkI[0]).next("p").html("用户名不能为空")
 		}
@@ -134,7 +138,11 @@ $(function() {
 					 $(".navB  .fr").addClass("logined")
 					 $(".navB  .fr").html("<a>欢迎您,"+uname+"</a> <a href='"+baseUrl+"huabu/my')\">我的画布</a><a href='"+baseUrl+"user/logout'>退出登陆</a>")
 					 //a href='{$base_url}project/my'>我的项目</a ><a href="{$base_url}huabu/my">我的画布</a><a href="{$base_url}user/logout
-					 location.href=baseUrl+"huabu/my"
+					if(d.Email==""||d.Mobile==""){
+						location.href=baseUrl+"user/infoUpdate"
+					}else{
+						location.href=baseUrl+"huabu/my"
+					}
 					
 					
 				 }else{
@@ -154,6 +162,9 @@ $(function() {
 	})  
     $(".san .sina").click(function(){
 		window.open (baseUrl+'user/weiboLogin','newwindow','height=460,width=720,top='+t+',left='+l+',toolbar=no,menubar=no,scrollbars=no, resizable=no,location=no, status=no') 
+	})  
+	$(".san .weixin").click(function(){
+		window.open (baseUrl+'user/weixinLogin','newwindow','height=512,width=720,top='+t+',left='+l+',toolbar=no,menubar=no,scrollbars=no, resizable=no,location=no, status=no') 
 	})    
 		
 	

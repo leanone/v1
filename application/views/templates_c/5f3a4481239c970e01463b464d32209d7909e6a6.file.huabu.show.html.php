@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2015-03-18 07:13:24
+<?php /* Smarty version Smarty-3.1.15, created on 2015-03-19 11:16:14
          compiled from "application\views\templates\huabu.show.html" */ ?>
 <?php /*%%SmartyHeaderCode:296154f6cb186f1dd2-65662827%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '5f3a4481239c970e01463b464d32209d7909e6a6' => 
     array (
       0 => 'application\\views\\templates\\huabu.show.html',
-      1 => 1426659203,
+      1 => 1426760172,
       2 => 'file',
     ),
   ),
@@ -26,7 +26,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'user' => 0,
     'pinglunList' => 0,
     'pinglun' => 0,
-    'uid' => 0,
     'pinglunChild' => 0,
   ),
   'has_nocache_code' => false,
@@ -305,14 +304,15 @@ public/face/male_180.png" alt=""></a>
          
         <div class="comment-list">
    
-      
+      	    <a  name="pl"> </a>	
             <div class="hot-loading loading"><a href="javascript:;"></a></div>
-            <div class="list">
+            <div class="list" >
 
             
     
             
 <?php if ($_smarty_tpl->tpl_vars['pinglunList']->value) {?>
+	
 <?php  $_smarty_tpl->tpl_vars['pinglun'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['pinglun']->_loop = false;
  $_from = $_smarty_tpl->tpl_vars['pinglunList']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
 foreach ($_from as $_smarty_tpl->tpl_vars['pinglun']->key => $_smarty_tpl->tpl_vars['pinglun']->value) {
@@ -338,7 +338,7 @@ $_smarty_tpl->tpl_vars['pinglun']->_loop = true;
 
                     
                 </div>
-               <?php if ($_smarty_tpl->tpl_vars['pinglun']->value['Uid']==$_smarty_tpl->tpl_vars['uid']->value) {?><?php } else { ?>
+               <?php if ($_smarty_tpl->tpl_vars['pinglun']->value['Uid']==$_smarty_tpl->tpl_vars['user']->value['Uid']) {?><?php } else { ?>
                 <div class="action"  data-rid="0"  data-pid="<?php echo $_smarty_tpl->tpl_vars['pinglun']->value['ID'];?>
 "  data-id="<?php echo $_smarty_tpl->tpl_vars['pinglun']->value['ID'];?>
 ">
@@ -380,7 +380,7 @@ $_smarty_tpl->tpl_vars['pinglunChild']->_loop = true;
                     <?php }?>
               	   
                     </div>
-                    <?php if ($_smarty_tpl->tpl_vars['pinglunChild']->value['Uid']==$_smarty_tpl->tpl_vars['uid']->value) {?><?php } else { ?>
+                    <?php if ($_smarty_tpl->tpl_vars['pinglunChild']->value['Uid']==$_smarty_tpl->tpl_vars['user']->value['Uid']) {?><?php } else { ?>
                     <div class="action"  data-rid="<?php echo $_smarty_tpl->tpl_vars['pinglun']->value['ID'];?>
 "  data-pid="<?php echo $_smarty_tpl->tpl_vars['pinglun']->value['ID'];?>
 "  data-id="<?php echo $_smarty_tpl->tpl_vars['pinglunChild']->value['ID'];?>

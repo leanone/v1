@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2015-03-18 07:05:19
+<?php /* Smarty version Smarty-3.1.15, created on 2015-03-20 05:05:21
          compiled from "application\views\templates\indexNew.html" */ ?>
 <?php /*%%SmartyHeaderCode:2345954f6c09ee63603-69618603%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '8e13ebc41d3f45ce3b29e9c868b86d39924fcb52' => 
     array (
       0 => 'application\\views\\templates\\indexNew.html',
-      1 => 1426658718,
+      1 => 1426822745,
       2 => 'file',
     ),
   ),
@@ -21,8 +21,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   array (
     'language' => 0,
     'base_url' => 0,
-    'cid' => 0,
-    'uid' => 0,
+    'userData' => 0,
     'userLogined' => 0,
     'user' => 0,
   ),
@@ -53,15 +52,16 @@ public/favicon.ico">
 <script>
 var baseUrl="<?php echo $_smarty_tpl->tpl_vars['base_url']->value;?>
 "
-var Cid="<?php echo $_smarty_tpl->tpl_vars['cid']->value;?>
-"
-var Uid="<?php echo $_smarty_tpl->tpl_vars['uid']->value;?>
-"
+var userData=<?php echo $_smarty_tpl->tpl_vars['userData']->value;?>
+;
+var Uid=userData.Uid
+var Cid=userData.CookieID
+var Uname=userData.NickName
 </script>
 <script src="<?php echo $_smarty_tpl->tpl_vars['base_url']->value;?>
 public/js/comm.js"></script>
 <script src="<?php echo $_smarty_tpl->tpl_vars['base_url']->value;?>
-public/js/user.js"></script>
+public/js/user.js?v=20150320"></script>
 <script src="<?php echo $_smarty_tpl->tpl_vars['base_url']->value;?>
 public/js/index1.js"></script>
 

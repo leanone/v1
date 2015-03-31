@@ -26,7 +26,19 @@ class pinglunm extends CI_Model {
 			return false;	
 		}
      }
-	 
+	 //所有评论
+	 function getAllList(){
+		$d=array();
+		$i=0;
+		$sql="select A.*,B.userName,B.NickName,B.FaceUrl,C.Subject as HuabuSubject from db_comment A inner join db_user B on A.Uid=B.Uid inner join db_huabu C on C.Hid=A.Hid  order by A.ID desc";
+		$query=$this->db->query($sql);
+			
+		foreach ($query->result_array() as $row){
+			
+			$i++;	  
+		}
+		return  $d; 
+	 }
 	
 	  //获取最新10条数据
 	 function getList($Hid,$endNum=9999, $startNum=0){
@@ -57,22 +69,44 @@ class pinglunm extends CI_Model {
 		}
 		return  $d; 
 	 }
+	 //时间格式化
+	 function tranTime($stime) { 
+
+	  
+		$rtime = date("m-d H:i",$stime); 
+		$htime = date("H:i",$stime); 
+		$time = time() - $stime; 
+		if ($time < 60) { 
+			$str = '刚刚'; 
+		}elseif ($time < 60 * 60) { 
+			$min = floor($time/60); 
+			$str = $min.'分钟前'; 
+		} elseif ($time < 60 * 60 * 24) { 
+			$h = floor($time/(60*60)); 
+			$str = $h.'小时前 '.$htime; 
+		} elseif ($time < 60 * 60 * 24 * 3) { 
+			$d = floor($time/(60*60*24)); 
+			if($d==1) {
+				$str = '昨天 '.$rtime; 
+			}else{ 
+				$str = '前天 '.$rtime; 
+			}
+		} else { 
+			$str = date("Y-m-d H:i:s",$stime); 
+		} 
+		return $str; 
+	} 
 	 /*
 	 初始化评论数据
 	 */
 	 function iniPinlun($row){
-		 $stime=strtotime($row["AddTime"]);
-		  $time=strtotime(now());
+		  $stime=strtotime($row["AddTime"]);
+		
+		
 		  
-		  if($time-$stime>24*60*60){
-			  $row["sAddTime"]=$row["AddTime"];
-		  }elseif($time-$stime>60*60){
-			  $row["sAddTime"]="今天".date("H:i", $stime);
-		  }elseif($time-$stime>60){
-			  $row["sAddTime"]=floor(($time-$stime)/60)."分钟前";
-		  }else{
-			  $row["sAddTime"]=floor(($time-$stime))."秒前";
-		  }
+		  $row["sAddTime"]=$this->tranTime($stime);
+		
+		  
 		  if($row["NickName"]!=""){
 			  $row["pubName"]=$row["NickName"];
 		  }else{
@@ -102,6 +136,8 @@ class pinglunm extends CI_Model {
 				}
 			  
 		  }
+		  
+		  $row["Content"]= RemoveXSS($row["Content"]);
 		  return  $row;
 	 }
 	 

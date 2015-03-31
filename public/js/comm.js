@@ -1,7 +1,3 @@
-
-
-
-
 // JavaScript Document
 
 function isPhoneOrMobile(s){
@@ -19,6 +15,11 @@ function isEmail(s){
   var patrn=/^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
   if(!patrn.exec(s))  return false ;
   return true 
+}
+function isTime(s){
+  var patrn=/^[\d]{4}-[\d]{1,2}-[\d]{1,2}\s[\d]{1,2}:[\d]{1,2}:[\d]{1,2}$/;
+  if(!patrn.exec(s))  return false ;
+  return true 	
 }
 function isQQ(s){
  var patrn=/^[1-9][0-9]{4,10}$/;

@@ -117,6 +117,14 @@ function isEmail($str)
         return false;
     }
 }
+/*** 验证输入的手机格式是否合法*/
+function isMobile($str)
+{
+	
+    $chars = "/(^0{0,1}13[0-9]{9}$)|(13\d{9}$)|(14[5-7]\d{8}$)|(15\d{9}$)|(17[6-8]\d{8}$)|(18\d{9}$)/i";
+     if (preg_match($chars, $str)){  return true; }else{  return false; }
+  
+}
 
 
 /*** 检查是否为一个合法的时间格式*/
@@ -251,6 +259,28 @@ if (!function_exists('file_put_contents'))
         }
     }
 }
+
+if (!function_exists('http_build_query'))
+{
+   
+    function http_build_query($data)
+    {
+         $valueArr = array();
+
+		 foreach($data as $key => $val){
+			 $valueArr[] = "$key=$val";
+		 }
+
+		 $keyStr = implode("&",$valueArr);
+		 $combined .= ($keyStr);
+
+		 return $combined;
+    }
+}
+
+
+
+
 /**
  * 获取文件后缀名,并判断是否合法
  *
@@ -277,6 +307,10 @@ function get_fileType($file_name, $allow_type = array())
         }
     }
 }
+
+
+
+
 //---------------------------------------------------------------------------
 ///IP相关
 /**** 获得用户的真实IP地址*/
@@ -339,3 +373,50 @@ function now($addTime=0){
 	return date("Y-m-d H:i:s", time()+7*60*60);
 }
 
+//XSS过滤函数
+function RemoveXSS($val) {  
+
+   $val = preg_replace('/([\x00-\x08,\x0b-\x0c,\x0e-\x19])/', '', $val);  
+
+   $search = 'abcdefghijklmnopqrstuvwxyz'; 
+   $search .= 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';  
+   $search .= '1234567890!@#$%^&*()'; 
+   $search .= '~`";:?+/={}[]-_|\'\\'; 
+   for ($i = 0; $i < strlen($search); $i++) { 
+	 
+	  $val = preg_replace('/(&#[xX]0{0,8}'.dechex(ord($search[$i])).';?)/i', $search[$i], $val);
+
+	  $val = preg_replace('/(&#0{0,8}'.ord($search[$i]).';?)/', $search[$i], $val); 
+   } 
+
+ 
+   $ra1 = Array('javascript', 'vbscript', 'expression', 'applet', 'meta', 'xml', 'blink', 'link', 'style', 'script', 'embed', 'object', 'iframe', 'frame', 'frameset', 'ilayer', 'layer', 'bgsound', 'title', 'base'); 
+   $ra2 = Array('onabort', 'onactivate', 'onafterprint', 'onafterupdate', 'onbeforeactivate', 'onbeforecopy', 'onbeforecut', 'onbeforedeactivate', 'onbeforeeditfocus', 'onbeforepaste', 'onbeforeprint', 'onbeforeunload', 'onbeforeupdate', 'onblur', 'onbounce', 'oncellchange', 'onchange', 'onclick', 'oncontextmenu', 'oncontrolselect', 'oncopy', 'oncut', 'ondataavailable', 'ondatasetchanged', 'ondatasetcomplete', 'ondblclick', 'ondeactivate', 'ondrag', 'ondragend', 'ondragenter', 'ondragleave', 'ondragover', 'ondragstart', 'ondrop', 'onerror', 'onerrorupdate', 'onfilterchange', 'onfinish', 'onfocus', 'onfocusin', 'onfocusout', 'onhelp', 'onkeydown', 'onkeypress', 'onkeyup', 'onlayoutcomplete', 'onload', 'onlosecapture', 'onmousedown', 'onmouseenter', 'onmouseleave', 'onmousemove', 'onmouseout', 'onmouseover', 'onmouseup', 'onmousewheel', 'onmove', 'onmoveend', 'onmovestart', 'onpaste', 'onpropertychange', 'onreadystatechange', 'onreset', 'onresize', 'onresizeend', 'onresizestart', 'onrowenter', 'onrowexit', 'onrowsdelete', 'onrowsinserted', 'onscroll', 'onselect', 'onselectionchange', 'onselectstart', 'onstart', 'onstop', 'onsubmit', 'onunload'); 
+   $ra = array_merge($ra1, $ra2); 
+
+   $found = true;
+   while ($found == true) { 
+	  $val_before = $val; 
+	  for ($i = 0; $i < sizeof($ra); $i++) { 
+		 $pattern = '/'; 
+		 for ($j = 0; $j < strlen($ra[$i]); $j++) { 
+			if ($j > 0) { 
+			   $pattern .= '(';  
+			   $pattern .= '(&#[xX]0{0,8}([9ab]);)'; 
+			   $pattern .= '|';  
+			   $pattern .= '|(&#0{0,8}([9|10|13]);)'; 
+			   $pattern .= ')*'; 
+			} 
+			$pattern .= $ra[$i][$j]; 
+		 } 
+		 $pattern .= '/i';  
+		 $replacement = substr($ra[$i], 0, 2).'<x>'.substr($ra[$i], 2);
+		 $val = preg_replace($pattern, $replacement, $val); 
+		 if ($val_before == $val) {  
+		  
+			$found = false;  
+		 }  
+	  }  
+   }  
+   return $val;  
+}

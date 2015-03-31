@@ -217,7 +217,7 @@ $config['sess_cookie_name']		= 'ci_session';
 $config['sess_expiration']		= 0;
 $config['sess_expire_on_close']	= TRUE;
 $config['sess_encrypt_cookie']	= FALSE;
-$config['sess_use_database']	= TRUE;
+$config['sess_use_database']	= FALSE;
 $config['sess_table_name']		= 'session';
 $config['sess_match_ip']		= TRUE;
 $config['sess_match_useragent']	= TRUE;
@@ -248,7 +248,7 @@ $config['cookie_secure']	= FALSE;
 | COOKIE data is encountered
 |
 */
-$config['global_xss_filtering'] = false;
+$config['global_xss_filtering'] = true;
 
 /*
 |--------------------------------------------------------------------------
@@ -329,3 +329,26 @@ $config['proxy_ips'] = '';
 
 /* End of file config.php */
 /* Location: ./application/config/config.php */
+
+
+//自定义变量开始
+
+$config['qq_config'] = array(
+	'appid' => '101191923',
+	'appkey' => 'c8b402d2b0481724f9f707b38f8deba1',
+	'callback' => 'http://leanone.cn/user/qqLogin/'
+);
+$config['sina_config'] = array(
+	'appid' => '101191923',
+	'appkey' => 'c8b402d2b0481724f9f707b38f8deba1',
+	'callback' => 'http://leanone.cn/user/qqLogin/'
+);
+
+$config['weixin_config'] = array(
+	'AppID' => 'wx6d8f3ceeb4627ffd',
+	'AppSecret' => "9b36fd9377295f8603bc8e4f82b81804",
+	'loginUrl' => "https://open.weixin.qq.com/connect/qrconnect",
+	'tokenUrl'=>"https://api.weixin.qq.com/sns/oauth2/access_token",
+	'callbackUrl'=>"http://leanone.cn/user/weixinLogin"
+		
+);

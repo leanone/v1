@@ -1,0 +1,180 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<link rel="stylesheet" type="text/css" href="/public/css/mobile.css">
+<script src="/public/js/jquery.min.js"></script>
+<script>
+
+var phoneWidth = parseInt(window.screen.width);
+var phoneHeight = parseInt(window.screen.height);
+var phoneScale = phoneWidth/640;
+
+var ua = navigator.userAgent;
+if (/Android (\d+\.\d+)/.test(ua)){
+	var version = parseFloat(RegExp.$1);
+	// andriod 2.3
+	if(version>2.3){
+		document.write('<meta name="viewport" content="width=640, minimum-scale = '+phoneScale+', maximum-scale = '+phoneScale+', target-densitydpi=device-dpi">');
+	// andriod 2.3以上
+	}else{
+		document.write('<meta name="viewport" content="width=640, target-densitydpi=device-dpi">');
+	}
+	// 其他系统
+} else {
+	document.write('<meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi">');
+}
+
+</script>
+</head>
+
+<body>
+    <div class="warpe">
+    	<div class="heard">
+        	<p>{if $data.Subject}{$data.Subject}{else}好点子画布{/if}<span></span></p>
+        </div>
+	</div>
+    
+    <div class="main">
+		
+        <div class="m_one">
+        	<div class="one">1</div>
+        	<div class="one_1">{$language.huabu_step1}</div>
+            <div class="clear"></div>
+            <div class="one_2">
+             <p>{$data.h_one}</p>
+
+			<div class="clear"></div>
+            
+            <div class="one_3"> 
+           		 <a><span>{$language.huabu_step1_txt1}</span>{$data.h_one_text}</a>
+                 <a><span style="color:#FFF;">{$language.huabu_step1_txt2}</a>
+            </div>
+            </div>
+            
+           	
+        </div>    
+			
+            
+          <div class="clear"></div>
+          
+          <div class="m_one m_two">
+        	<div class="one">2</div>
+        	<div class="one_1">{$language.huabu_step2}</div>
+            <div class="clear"></div>
+            <div class="one_2">
+             <p>{$data.h_two}</p>
+              <div class="clear"></div>
+            
+           
+</div>
+            
+            <div class="clear"></div>
+          
+          <div class="m_one m_three">
+        	<div class="one">3</div>
+        	<div class="one_1">{$language.huabu_step3}</div>
+            <div class="clear"></div>
+             <div class="one_2 one_5">
+             <p>{$data.h_three_one}</p>
+
+       
+            </div>
+            <div class="one_2 one_5 one_51">
+              <p>{$data.h_three_two}</p>
+ 
+            </div>
+            
+            
+           
+            
+           
+            </div>
+            
+            
+             <div class="clear"></div>
+          
+          <div class="m_one m_three">
+        	<div class="one">4</div>
+        	<div class="one_1">{$language.huabu_step4}</div>
+            <div class="clear"></div>
+            <div class="one_2">
+            <p>{$data.h_four}</p>
+
+			<div class="clear"></div>
+            
+           	
+        </div>      
+  
+  <div class="clear"></div>
+          
+          <div class="m_one m_three1">
+        	<div class="one">5</div>
+        	<div class="one_1">{$language.huabu_step5}</div>
+            <div class="clear"></div>
+            <div class="one_2 one_5 one_52">
+              <ul>
+              	<li class="one_li">{$language.huabu_step5_txt1}：</li>
+                <li>{if $data.h_five_one eq '0'}否{else}是{/if}</li>
+              </ul>
+              <ul>
+              	<li  class="one_li">{$language.huabu_step5_txt2}</li>
+                <li>{$data.h_five_two}</li>
+              </ul>
+       
+       		<ul>
+              	<li class="one_li">{$language.huabu_step5_txt3}</li>
+                <li>{$data.h_five_three}</li>
+              </ul>
+       
+      		 <ul>
+              	<li style="border:none; border-right:1px solid #999;" class="one_li">{$language.huabu_step5_txt4}</li>
+                <li style="border:none;">{$data.h_five_four}</li>
+              </ul>
+       
+       
+            </div>
+            <div class="one_2 one_5 one_51 one_53">
+             <p>{$data.h_five_five}</p>
+ 
+            </div>
+            
+           	
+        </div>      
+  
+         
+          <div class="clear"></div>
+          
+          <div class="m_one m_three1">
+        	<div class="one">6</div>
+        	<div class="one_1">{$language.huabu_step6}</div>
+            <div class="clear"></div>
+            <div class="one_2 one_5 ">
+            <div class="one_5l">
+             	{$language.huabu_step6_txt3}
+             </div>
+       		<div class="one_5r">
+             	 <p>{$data.h_six_one}</p>
+             </div>
+       			
+            </div>
+            <div class="one_2 one_5 one_51 ">
+             <div class="one_5l">
+             {$language.huabu_step6_txt4}
+             </div>
+ 			<div class="one_5r">
+           <p>{$data.h_six_two}</p> 
+             </div>
+                    
+            </div>
+            
+           	
+        </div> 
+        
+        
+               
+    </div>
+ 
+</body>
+</html>

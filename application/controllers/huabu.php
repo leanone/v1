@@ -5,32 +5,12 @@ class huabu extends MY_Controller {
 	public function __construct()
     {
         parent::__construct();
-		parent::ini();
-		
-		
-		
-		
-		
-	
-	
 		
 		$this->load->model("pinglunm");
 	
 		
-	
-		
-	
-		
-	
-		
 	}
-	public function test11(){
-		echo $this->base_url;
-		echo "<br/>";
-		echo $this->Uid;
-		echo "<br/>";
-		echo $this->Cid;
-	}
+
 	public function index()
 	{
 		
@@ -39,11 +19,21 @@ class huabu extends MY_Controller {
 	//画布展示
 	public function show($mid=0){
 		//$this->smarty->assign('msg',"对不起，你还没有登录哦~");
+		$ua = strtolower(@$_SERVER['HTTP_USER_AGENT']);
+
+		$uachar = "/(nokia|iphone|sony|ericsson|mot|samsung|sgh|lg|philips|panasonic|alcatel|lenovo|cldc|midp|mobile)/i";
+		
 		
 		
 		$d=$this->huabum->isExitMid($mid);
 		
 		if($d){
+			
+			if( !preg_match("/(ipad)/i", $ua) && $ua != '' &&  preg_match($uachar, $ua)){
+		   		header("Location: ".$this->base_url."m/huabu/show/$mid.html"); 
+				exit;
+			}
+		
 			
 			$this->huabum->addInt("visitNum",$mid);
 			
@@ -73,6 +63,22 @@ class huabu extends MY_Controller {
 		}
 	}
 	
+	public function download(){
+	
+		$file=$this->base_url."download/huabu";
+	
+		$this->smarty->assign("file",$file);
+		$this->smarty->view('download.html');
+	
+	
+	
+	}
+	public function add(){
+	
+		
+		$this->smarty->view('huabu.html');
+	}
+	
 	public function edit($mid){
 		$d=$this->huabum->isExitMid($mid);
 			
@@ -93,84 +99,31 @@ class huabu extends MY_Controller {
 		}
 	}
 	
-	
-	public function test(){
-		$this->huabum->addInt("favorNum","6ab90ce026822915");
-		if( $this->input->cookie("favorNum_6ab90ce026822915")){
-			echo 111;	
-		}else{
-			echo 222;	
-		}
-		
-	}
-	public function download(){
-	
-		$file=$this->base_url."download/huabu";
-	
-		$this->smarty->assign("file",$file);
-		$this->smarty->view('download.html');
-	
-	
-	
-	}
-	public function add(){
-		/*
-		if($this->Logined){
-			if($this->huabum->getMy($this->Uid)){
-				header("Location: ".$this->base_url."huabu/my"); 
-			}
-		}
-		*/
-		$this->smarty->view('huabu.html');
-	}
-	
+
 	
 	
 	
 	public function my(){
 		$user=$this->userm->getInfo($this->Uid);
-		if($user["Email"]=="" || $user["Mobile"]==""){
-			header("Location: ".$this->base_url."user/infoUpdate"); 
-		}else{
-			header("Location: ".$this->base_url."huabu/lists/".$user["mID"].".html"); 
-		}
-		exit;
-			
 		$num=$this->huabum->getSaveNum($this->Uid);
 		if($num>1){
-			$user=$this->userm->getInfo($this->Uid);
 			header("Location: ".$this->base_url."huabu/lists/".$user["mID"].".html"); 
-			
+		}elseif($num==0){
+			header("Location: ".$this->base_url."huabu/add"); 
 		}else{
-			$id=$this->huabum->getMy($this->Uid);
-		//lists
-			if($id){
-				
-				
-				$data=$this->huabum->getInfo($id);
-			
-				header("Location: ".$this->base_url."huabu/edit/".$data["mID"].".html"); 
-				
-				$data["h_one"]=htm2str($data["h_one"]);
-				$data["h_two"]=htm2str($data["h_two"]);
-				$data["h_three_one"]=htm2str($data["h_three_one"]);
-				$data["h_three_two"]=htm2str($data["h_three_two"]);
-				$data["h_four"]=htm2str($data["h_four"]);
-				
-				$data["h_five_five"]=htm2str($data["h_five_five"]);
-				$data["h_six_one"]=htm2str($data["h_six_one"]);
-				$data["h_six_two"]=htm2str($data["h_six_two"]);
 		
-			
-				$this->smarty->assign('data',$data);
-				$this->smarty->view('huabu.my.html');
-				//$this->smarty->view('huabu.my.html');
+			$id=$this->huabum->getMy($this->Uid);
+			if($id){
+				$data=$this->huabum->getInfo($id);
+				header("Location: ".$this->base_url."huabu/edit/".$data["mID"].".html"); 
 			}else{
-				$this->smarty->assign('msg',"对不起，您还没有添加哦~");
+				$this->smarty->assign('msg',"数据错误~");
 				$this->smarty->view('msg.html');
-				
+			
 			}
 		}
+		
+
 	}
 	public function addSave(){
 		
@@ -196,21 +149,14 @@ class huabu extends MY_Controller {
 		
 		$data["h_six_one"]=str2htm($this->input->post("h_six_one"));
 		$data["h_six_two"]=str2htm($this->input->post("h_six_two"));
-		
+		$data["AddIP"]=ip();
 	
 		
 		$mID=$this->huabum->addSave($data);
 		//$callback=$this->input->get("callback");
 		//echo $callback.'({"flag":1,"mID":"'.$mID.'"})';
 		header("Location: ".$this->base_url."huabu/edit/".$mID.".html"); 
-		/*
-		if(!$this->Logined){
-			header("Location: ".$this->base_url."huabu/show/".$mID.".html"); 
-		}else{
-			header("Location: ".$this->base_url."huabu/my"); 
-		}
-		*/
-		
+	
 		
 		
 	}
@@ -218,14 +164,7 @@ class huabu extends MY_Controller {
 	
 		$mID=$this->input->post("mID");
 		//1.用户是否已登陆
-	/*
-		if(!$this->Logined){
-		
-			$this->smarty->assign('msg',"对不起，你还没有登录哦~");
-			$this->smarty->view('msg.html');
-			
-		}
-			*/
+	
 		if(!$this->huabum->isExitMid($mID)){
 			$this->smarty->assign('msg',"参数错误~");
 			$this->smarty->view('msg.html');
@@ -298,6 +237,8 @@ class huabu extends MY_Controller {
 		if($mID !=""){
 			$uid=$this->userm->getUidByMid($mID);
 			if($uid){
+				
+				$this->smarty->assign('nav_id',5);
 				$data=$this->huabum->getList($uid,0,24);	
 				$this->smarty->assign('listData',$data);
 				$this->smarty->view('list.my.html');
@@ -306,6 +247,7 @@ class huabu extends MY_Controller {
 				$this->smarty->view('msg.html');
 			}
 		}else{
+			$this->smarty->assign('nav_id',6);
 			$data=$this->huabum->getList(0,0,24);	
 			$this->smarty->assign('listData',$data);
 			$this->smarty->view('list.html');

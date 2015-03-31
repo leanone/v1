@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2015-03-17 10:12:53
+<?php /* Smarty version Smarty-3.1.15, created on 2015-03-19 11:12:27
          compiled from "application\views\templates\list.my.html" */ ?>
 <?php /*%%SmartyHeaderCode:762154f811d8a17e05-63156174%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '0ba182138607ea2155a291985e853d0141d3d0ae' => 
     array (
       0 => 'application\\views\\templates\\list.my.html',
-      1 => 1426495501,
+      1 => 1426759946,
       2 => 'file',
     ),
   ),
@@ -130,8 +130,9 @@ huabu/add" class="creat">+ 创建画布</a>
 
 <div class="z_main" style="padding-top:20px;">
     	<div>
-        <ul>
+
  <?php if ($_smarty_tpl->tpl_vars['listData']->value) {?>
+ 	 <ul>
     <?php  $_smarty_tpl->tpl_vars['listItem'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['listItem']->_loop = false;
  $_from = $_smarty_tpl->tpl_vars['listData']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
 foreach ($_from as $_smarty_tpl->tpl_vars['listItem']->key => $_smarty_tpl->tpl_vars['listItem']->value) {
@@ -188,10 +189,11 @@ huabu/show/<?php echo $_smarty_tpl->tpl_vars['listItem']->value['mID'];?>
       	</li>
                 
     <?php } ?>
+    </ul>
 <?php } else { ?>
- 	没有数据
+ 	<p class="tac c9 pt20">亲，你还没有添加过画布哦~</p>
 <?php }?>        
-        </ul>
+        
     	</div>
 </div>
 

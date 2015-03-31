@@ -234,14 +234,15 @@
         {/literal} 
         <div class="comment-list">
    
-      
+      	    <a  name="pl"> </a>	
             <div class="hot-loading loading"><a href="javascript:;"></a></div>
-            <div class="list">
+            <div class="list" >
 
             
     
             
 {if $pinglunList}
+	
 {foreach from=$pinglunList item=pinglun}
 
    
@@ -259,7 +260,7 @@
                 	{$pinglun.Content}
                     
                 </div>
-               {if $pinglun.Uid eq $uid}{else}
+               {if $pinglun.Uid eq $user.Uid}{else}
                 <div class="action"  data-rid="0"  data-pid="{$pinglun.ID}"  data-id="{$pinglun.ID}">
                     <span class="btns">
                         <a class="vote"  title="赞"  href="javascript:;"><span>赞<em>{$pinglun.favorNum}</em></span></a>
@@ -288,7 +289,7 @@
                     {/if}
               	   
                     </div>
-                    {if $pinglunChild.Uid eq $uid}{else}
+                    {if $pinglunChild.Uid eq $user.Uid}{else}
                     <div class="action"  data-rid="{$pinglun.ID}"  data-pid="{$pinglun.ID}"  data-id="{$pinglunChild.ID}">
                         <span class="btns">
                             <a class="vote" title="赞"  href="javascript:;"><span>赞<em>{$pinglunChild.favorNum}</em></span></a>

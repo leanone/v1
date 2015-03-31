@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2015-03-17 03:59:29
+<?php /* Smarty version Smarty-3.1.15, created on 2015-03-19 11:01:49
          compiled from "application\views\templates\huabu.html" */ ?>
 <?php /*%%SmartyHeaderCode:2490354f6c1df288455-18626401%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '42ff0a2a483fa057b2d5aeee36a95b232685c90a' => 
     array (
       0 => 'application\\views\\templates\\huabu.html',
-      1 => 1426495280,
+      1 => 1426759304,
       2 => 'file',
     ),
   ),
@@ -230,7 +230,8 @@ huabu/addSave"  method="post" id="myFrom">
 	$("#h_btn").click(function(){
 	
 		if($("input[name=h_subject]").val()==""){
-			$("input[name=h_subject]").addClass("err").focus()
+			$("input[name=h_subject]").parent().addClass("err")
+			$("input[name=h_subject]").focus()
 			$(".errMsg").show()
 			$(document).scrollTop(0)
 			setTimeout(function(){
@@ -244,7 +245,7 @@ huabu/addSave"  method="post" id="myFrom">
 	
 	$("input[name=h_subject]").on("change",function(){
 		if($(this).val()!=""){
-			$(this).removeClass("err")
+			$(this).parent().removeClass("err")
 			$(".errMsg").fadeOut();
 		}	
 	})

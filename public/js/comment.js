@@ -217,6 +217,52 @@ $(document).ready(function(e) {
 		$(this).html(iniFaceHtml($(this).html()))
 	
 	})
+	
+var hght=0;
+var top=0;
+
+
+
+$(document).scroll( function() {
+
+	top=$(this).scrollTop();
+	//document.title=top+":"+$(document).height();
+
+});
+
+setInterval(function(){
+if(top>parseInt(hght/3)*2)
+	str='<div class="item clearfix">';
+	str+='<div class="head"><img src="http://localhost/leanone/public/face/unkown.gif"></div>';
+	str+='<div class="cont"><div class="info"><span class="name">13717810545</span><span class="time">[2015-03-12 11:04:33]</span></div>';
+	str+='<div class="txt">111</div>'
+	str+='</div>'
+	str+='<div class="sitemList"></div>'
+	str+='</div>'
+	
+	str+='<div class="item clearfix">';
+	str+='<div class="head"><img src="http://localhost/leanone/public/face/unkown.gif"></div>';
+	str+='<div class="cont"><div class="info"><span class="name">13717810545</span><span class="time">[2015-03-12 11:04:33]</span></div>';
+	str+='<div class="txt">111</div>'
+	str+='</div>'
+	str+='<div class="sitemList"></div>'
+	str+='</div>'
+	
+	str+='<div class="item clearfix">';
+	str+='<div class="head"><img src="http://localhost/leanone/public/face/unkown.gif"></div>';
+	str+='<div class="cont"><div class="info"><span class="name">13717810545</span><span class="time">[2015-03-12 11:04:33]</span></div>';
+	str+='<div class="txt">111</div>'
+	str+='</div>'
+	str+='<div class="sitemList"></div>'
+	str+='</div>'
+
+	//$(".list").append(str)
+},2000);
+
+
+
+
+
 });
 
 

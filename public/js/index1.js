@@ -128,15 +128,7 @@ function iniPage(){
 	bl=Math.floor(100*$(window).height()/1080)/100
 
 	sl=(2560*bl-$(window).width())*0.5
-	$(".kv1 .btn").css({"width":450*bl,"height":120*bl,"position":"absolute","top":420*bl,"left":600*bl-sl})
-	$(".kv2 .btn").css({"width":450*bl,"height":120*bl,"position":"absolute","top":540*bl,"left":950*bl-sl})
-	
-	$(".kv3 .btn").css({"width":450*bl,"height":120*bl,"position":"absolute","top":450*bl,"left":1500*bl-sl})
-	$(".kv4 .btn").css({"width":450*bl,"height":120*bl,"position":"absolute","top":420*bl,"left":600*bl-sl})
-	$(".kv5 .btn").css({"width":450*bl,"height":120*bl,"position":"absolute","top":460*bl,"left":600*bl-sl})	
-	$(".kv7 .btn").css({"width":450*bl,"height":120*bl,"position":"absolute","top":360*bl,"left":650*bl-sl})
-	$(".kv6 .btn").css({"width":450*bl,"height":120*bl,"position":"absolute","top":500*bl,"left":600*bl-sl})
-	
+	$("#btn_kv").css({"width":456*bl,"height":128*bl,"position":"absolute","top":564*bl,"left":418*bl-sl})
 	
 }
 function iniKv(id){

@@ -1,16 +1,15 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class admin extends CI_Controller {
+class admin extends MY_Controller {
 
 	public function __construct()
     {
         parent::__construct();
 		$this->load->database();
-		$this->baseUrl=$this->config->item("base_url");
-	    $this->smarty->assign( 'base_url',$this->baseUrl);
+
 		$this->load->model("projectm");
-		$this->load->model("huabum");
-		$this->load->model("userm");
+		$this->load->model("pinglunm");
+
 	
 	 }	
 	 public function checkLogin(){
@@ -25,7 +24,7 @@ class admin extends CI_Controller {
 		//$this->load->view('welcome_message');
 		//查询有没有登录
 		if($this->input->cookie("AdminLogined")){
-			$this->project();
+			$this->huabu();
 		}else{
 			$this->smarty->view('admin/login.html');
 		}
@@ -41,6 +40,16 @@ class admin extends CI_Controller {
 		$this->smarty->assign('nav',0);
 		$this->smarty->view('admin/huabu.html');
 		
+	}
+	public function pinlun(){
+		$this->checkLogin();
+		$this->smarty->assign('huabuList',$this->huabum->getList(0,0,999,0));
+	
+		
+		$this->smarty->assign('num1',$this->huabum->getNum("all"));
+		$this->smarty->assign('num2',$this->huabum->getNum("today"));
+		$this->smarty->assign('nav',0);
+		$this->smarty->view('admin/huabu.html');
 	}
 	
 	public function login(){

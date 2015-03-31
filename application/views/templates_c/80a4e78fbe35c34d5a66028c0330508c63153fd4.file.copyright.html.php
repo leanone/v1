@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2015-03-17 10:12:53
+<?php /* Smarty version Smarty-3.1.15, created on 2015-03-20 09:29:26
          compiled from "application\views\templates\copyright.html" */ ?>
 <?php /*%%SmartyHeaderCode:2126954f6b73823bc35-10332463%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '80a4e78fbe35c34d5a66028c0330508c63153fd4' => 
     array (
       0 => 'application\\views\\templates\\copyright.html',
-      1 => 1426583125,
+      1 => 1426822739,
       2 => 'file',
     ),
   ),
@@ -119,5 +119,5 @@ project/add">申请创业基金</a>
       <a id="close">X</a>
 </div>
 <script src="<?php echo $_smarty_tpl->tpl_vars['base_url']->value;?>
-public/js/user.js"></script>
+public/js/user.js?v=20150320"></script>
 <?php }} ?>

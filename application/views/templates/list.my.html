@@ -95,8 +95,9 @@
 {/literal}
 <div class="z_main" style="padding-top:20px;">
     	<div>
-        <ul>
+
  {if $listData}
+ 	 <ul>
     {foreach from=$listData item=listItem}
     
       	<li>
@@ -132,10 +133,11 @@
       	</li>
                 
     {/foreach}
+    </ul>
 {else}
- 	没有数据
+ 	<p class="tac c9 pt20">亲，你还没有添加过画布哦~</p>
 {/if}        
-        </ul>
+        
     	</div>
 </div>
 {literal}

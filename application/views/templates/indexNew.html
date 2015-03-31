@@ -16,11 +16,13 @@
 <script src="http://libs.baidu.com/jquery/1.7.2/jquery.min.js"></script>
 <script>
 var baseUrl="{$base_url}"
-var Cid="{$cid}"
-var Uid="{$uid}"
+var userData={$userData};
+var Uid=userData.Uid
+var Cid=userData.CookieID
+var Uname=userData.NickName
 </script>
 <script src="{$base_url}public/js/comm.js"></script>
-<script src="{$base_url}public/js/user.js"></script>
+<script src="{$base_url}public/js/user.js?v=20150320"></script>
 <script src="{$base_url}public/js/index1.js"></script>
 
 </head>
@@ -31,7 +33,8 @@ var Uid="{$uid}"
     <div class="fl">
         <a href="http://leanone.cn/wp/?page_id=49" target="_blank">{$language.nav_1}</a>
         <a href="http://leanone.cn/wp/" target="_blank">{$language.nav_2}</a>
-        <a href="http://leanone.cn/download/"  target="_blank">{$language.nav_3}</a>
+        <a href="http://leanone.cn/huabu/lists"  target="_blank">{$language.nav_3}</a>
+       
         <a href="http://leanone.cn/wp/?page_id=187" target="_blank">{$language.nav_4}</a>
     </div>
     <div class="fr">
@@ -58,7 +61,7 @@ var Uid="{$uid}"
             <div class="fl">
                 <a href="http://leanone.cn/wp/?page_id=49"  target="_blank">{$language.nav_1}</a>
                 <a href="http://leanone.cn/wp/" target="_blank">{$language.nav_2}</a>
-                <a href="http://leanone.cn/download/"  target="_blank">{$language.nav_3}</a>
+                <a href="http://leanone.cn/huabu/lists"  target="_blank">{$language.nav_3}</a>
                 <a href="http://leanone.cn/wp/?page_id=187" target="_blank">{$language.nav_4}</a>
             </div>
             <div class="fr">
@@ -173,7 +176,7 @@ var Uid="{$uid}"
                 	<span>社交账号登录:</span> 
                     <a href="javascript:;" class="qq"></a>
                     <a href="javascript:;" class="sina"></a>
-                    <a href="javascript:alert('{$language.coming}');;" class="weixin"></a>
+                    <a href="javascript:;" class="weixin"></a>
                     <div class="fr toLogin"><span>已有账号，</span><a href="javascript:login();">直接登录</a></div>
      				<div class="fr toReg" style="display:none"><span>没有账号，</span><a href="javascript:reg();">马上注册</a></div>
      

@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class project extends CI_Controller {
+class project extends MY_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -21,28 +21,7 @@ class project extends CI_Controller {
     {
         parent::__construct();
 		
-		$this->smarty->assign( 'language',$this->lang->language);
-		
-		
-		$this->load->database();
 		$this->load->model("projectm");
-	
-	   
-
-		$this->base_url=$this->config->item("base_url");
-		$this->Cid=$this->input->cookie("cid");
-		$this->Uid=$this->input->cookie("uid");
-		
-		$this->smarty->assign( 'base_url',$this->base_url);
-		$this->smarty->assign( 'uid',$this->Uid);
-		$this->smarty->assign( 'cid',$this->Cid);
-		$this->smarty->assign( 'uname',$this->input->cookie("uname"));
-		
-		$this->Logined=$this->input->cookie("logined")==true?true:false;
-		$this->smarty->assign( 'userLogined',$this->Logined);
-		if($this->Logined){
-			$this->smarty->assign( 'user',$this->userm->getInfo($this->Uid));
-		}
 	
 		
 	}

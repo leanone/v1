@@ -9,7 +9,7 @@
 {include file="navB.html"}
 <div class="h_main">
 
-	<h1>好点子画布</h1>
+	<h1>创建好点子画布</h1>
 	
     <div class="h_nav">
     	
@@ -88,8 +88,8 @@
                         <tr>
                           <td width="142" class="bg1">{$language.huabu_step5_txt1}</td>
                           <td width="62"  ><select  name="h_five_one"><option value="1">是</option><option value="0">否</option></select></td>
-                          <td width="75"  class="bg1">{$language.huabu_step5_txt2}</td>
-                          <td width="68"><input type="text"  name="h_five_two" class="i1"/></td>
+                          <td width="85"  class="bg1">{$language.huabu_step5_txt2}</td>
+                          <td width="58"><input type="text"  name="h_five_two" class="i1"/></td>
                         </tr>
                         <tr>
                           <td class="bg1">{$language.huabu_step5_txt3}</td>
@@ -135,7 +135,7 @@
 	
     
     
-    <div class="sbtn"><input type="button" value="保存画布" id="h_btn" /></div>
+    <div class="sbtn"><input type="button" value="创建画布" id="h_btn" /></div>
   
     </div>
      </form>
@@ -174,7 +174,8 @@
 	$("#h_btn").click(function(){
 	
 		if($("input[name=h_subject]").val()==""){
-			$("input[name=h_subject]").addClass("err").focus()
+			$("input[name=h_subject]").parent().addClass("err")
+			$("input[name=h_subject]").focus()
 			$(".errMsg").show()
 			$(document).scrollTop(0)
 			setTimeout(function(){
@@ -188,7 +189,7 @@
 	
 	$("input[name=h_subject]").on("change",function(){
 		if($(this).val()!=""){
-			$(this).removeClass("err")
+			$(this).parent().removeClass("err")
 			$(".errMsg").fadeOut();
 		}	
 	})

@@ -1,0 +1,59 @@
+/* CSS Document */
+*{ margin:0; padding:0;font-family:"微软雅黑";font-size:24px;color:#000000;}
+
+ul,ol,li{ list-style:none;}
+h1,h2,h3,h4,h5,h6{ font-size:14px;}
+input,select,textarea{ vertical-align:middle;}
+img{ border:none; vertical-align:middle;}
+a{ text-decoration:none; color:#333333;}
+a:hover{ color:#009999;}
+p{ white-space:normal;word-wrap:break-word; }
+.clear{ clear:both; overflow:hidden;}
+.tar{ text-align:right;}
+.tac{ text-align:center;}
+.wrap{ width:640px; position:relative; margin-top:30px; padding-top:90px;}
+
+.heard{ height:140px; width:640px; background:#5483a6;}
+.heard p{ width:90%; margin:0 auto;color:#FFF; font-size:42px;height:140px; line-height:140px; }
+
+.z_top{ position:absolute; top:0; left:0;}
+.z_top p{ height:80px;line-height:80px; display:inline-block; float:left; }
+.z_top span{ color:#FFF ; margin:0 15px 0 10px; font-size:36px; width:80px;height:80px;line-height:80px;
+ display:inline-block; background:#6C0; border-radius:100px; text-align:center;float:left; }
+
+
+
+
+.z_one,.z_four,.z_two,.z_four2{ margin:-30px 0 0 55px;width:536px; border:solid 2px #000;border-radius:10px;height:auto; 
+box-sizing: border-box;-webkit-box-sizing: border-box;-moz-box-sizing: border-box; padding:15px 20px 15px 20px;line-height:40px;}
+
+
+.z_one{ min-height:462px;   }
+.z_msg{ width:536px; margin-left:55px; padding-top:10px; }
+.z_msg .t{ font-size:18px; color:#999;}
+
+.z_two{ min-height:210px; margin-top:0;}
+.z_two1{ border-radius:10px 10px 0 0; margin-top:-30px;}
+.z_two2{border-radius: 0 0 10px 10px; border-top:none;}
+
+.z_four{ height:200px; border-radius:10px 10px 0 0; padding:0;border-bottom:none;}
+.z_four li{
+	 float:left; width:50%; padding-left:20px;
+	 height:49px; line-height:50px; border-bottom:solid 2px #000;
+	 box-sizing: border-box;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;
+}
+.z_four .tar{  border-right:solid 2px #000;  padding-left:0;  }
+.z_four2{   min-height:200px; height:auto; margin-top:0; border-radius:0 0 10px 10px; border-top:none;}
+
+
+
+.z_m5{min-height:200px; height:auto; width:536px; margin-left:55px; margin-top:-30px; border:solid 2px #000; border-top-right-radius:10px;}
+.z_m5 p{ padding:0;}
+.z_m5 p span{  width:15%; min-height:200px; height:auto; line-height:200px; float:left; border-right:2px solid #000; text-align:center;  display:inline-block;}
+.z_m5 p b{ font-weight:normal; padding:20px; width:75%;  display:inline-block; white-space:normal;word-wrap:break-word; line-height:30px;}
+.z_m51{ margin-top:0; border-top:none; border-radius:0 0 10px 10px; }
+
+.h50{ height:50px;}
+
+		
+		

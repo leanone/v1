@@ -28,28 +28,31 @@
 <table width="100%" border="0" cellpadding="5" cellspacing="1">
   <tbody>
     <tr>
+      <td align="center">注册来源</td>
       <td align="center">账户名称</td>
       <td align="center">昵称</td>
+      <td align="center">邮箱</td>
+      <td align="center">联系电话</td>
       <td align="center">注册日期</td>
       <td align="center">注册IP</td>
       <td align="center">登录次数</td>
-      <td align="center">注册类型</td>
       <td align="center">是否上传画布</td>
-      <td align="center">是否提交申请</td>
       <td align="center">相关操作</td>
     </tr>
     
 {if $userList}
 {foreach from=$userList item=user}
     <tr>
+      <td align="center">{$user.comeFrom}</td>
       <td align="center">{$user.userName}</td>
       <td align="center">{$user.NickName}</td>
+      <td align="center">{$user.Email}</td>
+      <td align="center">{$user.Mobile}</td>
       <td align="center">{$user.regTime}</td>
       <td align="center">{$user.regIP}</td>
       <td align="center">{$user.LoginTimes}</td>
-      <td align="center"></td>
+ 
       <td align="center">{if $user.hasHuabu eq '1'}有{/if}</td>
-      <td align="center">{if $user.hasProject eq '1'}有{/if}</td>
       <td align="center"></td>
     </tr>
 {/foreach}

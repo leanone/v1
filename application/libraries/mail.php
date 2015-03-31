@@ -5,24 +5,37 @@ class mail
 {
   
     var $settings          =  array();
-    function __construct($server, $port, $auth, $auth_username, $auth_password, $from='webmaster@alextu.com')
+    function __construct()
     {
 
+/*
 	   $this->settings = array(
-								'server'   => $server,   // SMTP 服务器
-								'port'     => $port,     // SMTP 端口, 默认不需修改
-								'auth'     => $auth,     // 是否需要 AUTH LOGIN 验证, 1=是, 0=否
-								'auth_username'   => $auth_username, // 发信人地址 (如果需要验证,必须为本服务器地址)
-								'auth_password'  => $auth_password,  // 验证用户名
-								'from' => $from
-								);
+			'server'   => "smtp.yeah.net",   // SMTP 服务器
+			'port'     => "25",     // SMTP 端口, 默认不需修改
+			'auth'     => 1,     // 是否需要 AUTH LOGIN 验证, 1=是, 0=否
+			'auth_username'   => "leanone@yeah.net", // 发信人地址 (如果需要验证,必须为本服务器地址)
+			'auth_password'  => "dekkeyiqrjchomev",  // 验证用户名 dekkeyiqrjchomev
+			'from' => 'leanone@yeah.net'
+			);
+			*/
+		 $this->settings = array(
+			'server'   => "smtp.sina.cn",   // SMTP 服务器
+			'port'     => "25",     // SMTP 端口, 默认不需修改
+			'auth'     => 1,     // 是否需要 AUTH LOGIN 验证, 1=是, 0=否
+			'auth_username'   => "leanone@sina.cn", // 发信人地址 (如果需要验证,必须为本服务器地址)
+			'auth_password'  => "ooo234",  // 验证用户名 dekkeyiqrjchomev
+			'from' => 'leanone@sina.cn'
+			);		
+						
 
     }
 
-	function send($email_to,$email_subject,$email_message,$textType="text/html"){
+	function send($email_to,$email_subject,$email_message){
 
 		$mailcfg   = $this ->settings;	
 		print_r($mailcfg);
+		$textType="text/html";
+		$textType="text/plain";
 	
 	
 		$email_subject="=?UTF-8?B?".base64_encode(str_replace("\n", ' ', $email_subject))."?=";
@@ -75,7 +88,30 @@ class mail
 		if(substr($lastmessage, 0, 3) != 354) { 
 			echo( "($mailcfg[server]:$mailcfg[port]) DATA - $lastmessage");
 		}
-		fputs($fp, "To: $email_to\r\nFrom: $mailcfg[from]\r\nContent-type:$textType;charset=UTF-8\r\nSubject: $email_subject\r\n\r\n$email_message\r\n.\r\n"); 
+		$headers="";
+		$headers.= "To: $email_to\r\n";
+		$headers.= "From: $mailcfg[from]\r\n";
+		
+		$headers .= "Organization: leanone.cn\r\n";  
+		$headers .= "MIME-Version: 1.0\r\n";  
+
+
+		$headers.= "Content-type:$textType;charset=UTF-8\r\n";
+		$headers.= "Subject: $email_subject\r\n\r\n$email_message\r\n.\r\n";
+		
+		fputs($fp, $headers); 
+		/*
+ $headers .= "Reply-To: The Sender <sender@sender.com>\r\n";   
+3.$headers .= "Return-Path: The Sender <sender@sender.com>\r\n";   
+4.$headers .= "From: The Sender <senter@sender.com>\r\n";   
+
+5.$headers .= "X-Priority: 3\r\n";  
+6.$headers .= "X-Mailer: PHP". phpversion() ."\r\n"  
+
+
+		
+		*/
+		//UTF-8
 		
 	}
   

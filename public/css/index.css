@@ -12,9 +12,9 @@ body,html{ width:100%; height:100%; overflow:hidden;}
 .kv6{background-image: url(../images/banner_06.jpg);}
 .kv7{background-image: url(../images/banner_07.jpg); }
 
-.kv0{background-image:url(../images/pc_02.jpg);}
+.kv0{background-image:url(../images/pc_04.jpg);}
 
-#btn_kv{ height:100px; width:550px; cursor:pointer; position:absolute; right:10%; top:40%; }
+#btn_kv{ height:218px; width:416px; cursor:pointer; position:absolute;  }
 
 .btn{  cursor:pointer; }
 

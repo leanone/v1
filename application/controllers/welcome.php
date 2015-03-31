@@ -1,39 +1,20 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Welcome extends CI_Controller {
+class Welcome extends MY_Controller {
 
 	public function __construct()
     {
         parent::__construct();
 		
-		$this->smarty->assign( 'language',$this->lang->language);
 		
-   
-
         $this->load->helper('url'); 
          
-		$this->baseUrl=$this->config->item("base_url");
-		
-		$this->smarty->assign( 'base_url',$this->baseUrl);
-		
-		
-		$this->Uid=intval($this->input->cookie("uid"));
-		$this->Cid=$this->input->cookie("cid");
-		
-		$this->smarty->assign( 'cid',$this->Cid);
-		$this->smarty->assign( 'uid',$this->Uid);
-		$this->smarty->assign( 'uname',$this->input->cookie("uname"));
-		
-		$this->Logined=$this->input->cookie("logined")==true?true:false;
-		$this->smarty->assign( 'userLogined',$this->Logined);
-		if($this->Logined){
-			$this->smarty->assign( 'user',$this->userm->getInfo($this->Uid));
-		}
+	
 		
     }
 	public function index()
 	{
-		$ua = strtolower($_SERVER['HTTP_USER_AGENT']);
+		$ua = strtolower(@$_SERVER['HTTP_USER_AGENT']);
 
 		$uachar = "/(nokia|sony|ericsson|mot|samsung|sgh|lg|philips|panasonic|alcatel|lenovo|cldc|midp|mobile)/i";
 		if( !preg_match("/(ipad)/i", $ua))

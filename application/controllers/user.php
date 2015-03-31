@@ -1,41 +1,21 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class user extends CI_Controller {
+class user extends MY_Controller {
 	
 	public function __construct()
     {
         parent::__construct();
 		
-		$this->smarty->assign( 'language',$this->lang->language);
-
-        $this->load->model('sitem');
+	
         $this->load->helper('url'); 
          
 		 
-		 
-        $this->load->library('tencent/oauth','oauth'); 
-		$this->load->library('sina/oauth','sinaOauth'); 
-		
-		
-		$this->baseUrl=$this->config->item("base_url");
-		$this->Uid=$this->getUid();              //登陆用户ID
-		$this->Cid=$this->input->cookie("cid");  //未登陆用户CID
-		
-		
-		$this->smarty->assign( 'base_url',$this->baseUrl);
-		
-		$this->smarty->assign( 'uid',$this->getUid());
-		$this->smarty->assign( 'cid',$this->Cid);
-		$this->smarty->assign( 'uname',$this->input->cookie("uname"));
+        $this->load->library('oauth/qq'); 
+		$this->load->library('oauth/sina'); 
+		$this->load->library('oauth/weixin'); 
 		
 		
 		
-		
-		$this->Logined=$this->input->cookie("logined")==true?true:false;
-		$this->smarty->assign( 'userLogined',$this->Logined);
-		if($this->Logined){
-			$this->smarty->assign( 'user',$this->userm->getInfo($this->Uid));
-		}
 		
     }
 	public function index(){
@@ -147,7 +127,7 @@ class user extends CI_Controller {
 		if($this->userm->hasUname($userName)){
 			$user=$this->userm->checkLogin($userName,$userPass,$userAuto);
 			if($user){
-				echo $callback.'({"flag":1,"msg":"登陆成功~","hasHuabu":'.$user->hasHuabu.'})';
+				echo $callback.'({"flag":1,"msg":"登陆成功~","Email":"'.$user["Email"].'","Mobile":"'.$user["Mobile"].'","hasHuabu":'.$user["hasHuabu"].'})';
 			}else{
 				echo $callback.'({"flag":0,"msg":"用户名或者密码有误~"})';
 			}
@@ -155,9 +135,29 @@ class user extends CI_Controller {
 			echo $callback.'({"flag":0,"msg":"该账号不存在~"})';
 		}
 	}
+	/*
+	登陆后跳转
+	*/
+	public function logined(){
+		
+	
+		if(!$this->isLogin){
+			header("Location: ".$this->base_url."user/login"); 
+		}else{
+			$user=$this->user;
+			
+			if($user["Email"]==""||$user["Mobile"]==""){
+				header("Location: ".$this->base_url."user/infoUpdate"); 
+			}else{
+				header("Location: ".$this->base_url.""); 
+			}
+			
+		}
+	}
 	public function logout(){
 		$this->userm->logout();
-		 header("Location: ".$this->baseUrl); 
+	
+		header("Location: ".$this->base_url); 
 	}
 	public function getLogout(){
 		$this->userm->logout();
@@ -167,9 +167,9 @@ class user extends CI_Controller {
 	
 	
 	public function infoUpdate(){
-		if(!$this->Logined){
+		if(!$this->isLogin){
 			
-			header("Location: ".$this->baseUrl."user/login"); 
+			header("Location: ".$this->base_url."user/login"); 
 		}else{
 			
 			$this->smarty->view('info.update.html');
@@ -177,7 +177,7 @@ class user extends CI_Controller {
 	}
 	public function infoUpdateSave(){
 		$callback=$this->input->get("callback");
-		if($this->Logined){
+		if($this->isLogin){
 			$data=array();
 			$data["Mobile"]=$this->input->get("mobile");
 			$data["Email"]=$this->input->get("email");
@@ -197,9 +197,7 @@ class user extends CI_Controller {
 	}
 	
 	
-	public function qqLoginTest(){
-		$this->smarty->view('test/qq.html');
-	}
+
 	//QQ用户登陆反馈
 	public function qqLogin(){
 		 
@@ -210,7 +208,8 @@ class user extends CI_Controller {
 		$qq_state=isset($_SESSION['qq_state'])?$_SESSION['qq_state']:''; 
 		
 		 //验证是登陆还是回调
-		 if($_GET['code'] &&  $_GET['code']!=""){
+		 $code=$this->input->get('code');
+		 if($code &&  $code!=""){
               
             
              //-------请求参数列表
@@ -223,51 +222,27 @@ class user extends CI_Controller {
              );
 			 
              //------构造请求access_token的url
-             $token_url = $this->oauth->combineURL(GET_ACCESS_TOKEN_URL, $keysArr);
-			 echo $token_url;
-             $response =$this->oauth->get_contents($token_url);
+             $token_url = $this->qq->combineURL(GET_ACCESS_TOKEN_URL, $keysArr);
+	
+             $response =$this->qq->get_contents($token_url);
 			 
              
-             $params = array();
-             parse_str($response, $params);
+            $params = array();
+            parse_str($response, $params);
 
         
              
-             $access_token = $params["access_token"];
-             $openid= $this->oauth->get_openid(  $access_token);
+            $access_token = $params["access_token"];
+            $openid= $this->qq->get_openid(  $access_token);
             
 			
              //进入主页
             //获取用户信息
-            $_data = $this->oauth->get_user_info($access_token,$openid,$appid);
+            $_data = $this->qq->get_user_info($access_token,$openid,$appid);
 			$_data = json_decode($_data);
 			
-			
-		
 			// var_dump($_data); 
-			 
-			// var_dump($_data);
-			/*
-			    "ret": 0,
-    "msg": "",
-    "is_lost":0,
-    "nickname": "Alex.TU",
-    "gender": "鐢�",
-    "province": "涓婃捣",
-    "city": "娴︿笢鏂板尯",
-    "year": "1982",
-    "figureurl": "http:\/\/qzapp.qlogo.cn\/qzapp\/101191923\/AA618F70B1EE7BCF5DD5E487810A7B54\/30",
-    "figureurl_1": "http:\/\/qzapp.qlogo.cn\/qzapp\/101191923\/AA618F70B1EE7BCF5DD5E487810A7B54\/50",
-    "figureurl_2": "http:\/\/qzapp.qlogo.cn\/qzapp\/101191923\/AA618F70B1EE7BCF5DD5E487810A7B54\/100",
-    "figureurl_qq_1": "http:\/\/q.qlogo.cn\/qqapp\/101191923\/AA618F70B1EE7BCF5DD5E487810A7B54\/40",
-    "figureurl_qq_2": "http:\/\/q.qlogo.cn\/qqapp\/101191923\/AA618F70B1EE7BCF5DD5E487810A7B54\/100",
-    "is_yellow_vip": "0",
-    "vip": "0",
-    "yellow_vip_level": "0",
-    "level": "0",
-    "is_yellow_year_vip": "0"
-			*/
-	
+
 			//exit;
 			$data=array();
 			$data["openid"]= $openid;
@@ -283,7 +258,7 @@ class user extends CI_Controller {
 			 }
 			// echo  $result["id"];
 			//	var_dump($result);  
-			$this->smarty->view('test/loginEnd.html');
+			$this->smarty->view('user.otherLoginEnd.html');
 			
           }else {
             
@@ -312,137 +287,177 @@ class user extends CI_Controller {
         
 		
 	}
+	/*微信企业号开发*/
+	public function weixincorp(){
+		
+		if(isset($_GET['code']) && $_GET['code']!=''){ 
+			$code=$_GET['code'];
+			
+			$d=$this->weixin->http("https://qyapi.weixin.qq.com/cgi-bin/gettoken?corpid=wxbd987cad15be45ff&corpsecret=qLDPfRxqCribxhbElFEZ0JxX9kO_qXQBrM-PFTTLKuHpj-INSZ9EhPk3C4xXEEDQ"); 
+			$ACCESS_TOKEN=$d["access_token"];
+			$d=$this->weixin->http("https://qyapi.weixin.qq.com/cgi-bin/user/getuserinfo?access_token=$ACCESS_TOKEN&code=$code&agentid=2"); 
+			print_r($d);
+			/*
+			{
+   "UserId":"USERID",
+   "DeviceId":"DEVICEID"
+}
+			*/
+	
+			
+
+		}else{
+			 header("Location:https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxbd987cad15be45ff&redirect_uri=http://leanone.cn/user/weixincorp&response_type=code&scope=SCOPE&state=alextu#wechat_redirect");
+		}
+	
+	}
 	public function weiboLogin(){
 	
-		$sina_k='3910900256'; //新浪微博应用App Key 
-		$sina_s='5c0bdcf37ad43838250fdc44b3a6f619'; //新浪微博应用App Secret 
 		$callback_url='http://leanone.cn/user/weiboLogin'; //授权回调网址 
-
 		
 		$sina_t=isset($_SESSION['sina_t'])?$_SESSION['sina_t']:''; 
 
 
   
-//检查是否已登录 
-
- if($sina_t!=''){ 
-
-     $sina=new sinaPHP($sina_k, $sina_s, $sina_t); 
-
-  
-
-     //获取登录用户id 
-
-     $sina_uid=$sina->get_uid(); 
-
-     $uid=$sina_uid['uid']; 
-
-   
-
-     //获取登录用户信息 
-
-     $result=$sina->show_user_by_id($uid); 
-
-     var_dump($result); 
-
- /** 
-
-28     //发布微博 
-29     $content='微博内容'; 
-30     $img='http://www.baidu.com/img/baidu_sylogo1.gif'; 
-31     $img_a=getimgp($img); 
-32     if($img_a[2]!=''){ 
-33         $result=$sina->update($content, $img_a); 
-34         //发布带图片微博 
-35     }else{ 
-36         $result=$sina->update($content); 
-37         //发布纯文字微博 
-38     } 
-39     var_dump($result); 
-43     //微博列表 
-44     $result=$sina->user_timeline($uid); 
-45     var_dump($result); 
-46     **/ 
-
- }else{ 
-
-     //生成登录链接 
-
-
-     $sina=new sinaPHP($sina_k, $sina_s); 
-
-     $login_url=$sina->login_url($callback_url); 
-
-    
-	 
-	 	if(isset($_GET['code']) && $_GET['code']!=''){ 
-
-			 $o=new sinaPHP($sina_k, $sina_s); 
-	
-		 $result=$o->access_token($callback_url, $_GET['code']); 
+		//检查是否已登录 
+		if($sina_t!=''){ 
 		
-	
-	 } 
-
-		 if(isset($result['access_token']) && $result['access_token']!=''){ 
-				 $_SESSION['sina_t']=$result['access_token'];
-   				//echo '授权完成，请记录<br/>access token：<input size="50" value="',$result['access_token'],'">';
-				$sina=new sinaPHP($sina_k, $sina_s, $_SESSION['sina_t']); 
-
-  
-
-			 //获取登录用户id 
-		
-			 $sina_uid=$sina->get_uid(); 
-		
+			 $this->sina->iniToken($sina_t);
+			 $sina_uid=$this->sina->get_uid(); 
 			 $uid=$sina_uid['uid']; 
-		
-		   
 		
 			 //获取登录用户信息 
 		
 			 $result=$sina->show_user_by_id($uid); 
-			 /*
-			   ["id"]=> int(1442733375)
-  ["screen_name"]=>  string(7) "AlexTUs"
-  ["name"]=> string(7) "AlexTUs"
-  ["province"]=> string(2) "11"
-  ["city"]=> string(1) "8"
-  ["location"]=> string(16) "北京 海淀区"
-  ["description"]=> string(24) "寻找、拥有、创造"
-  ["url"]=> string(27) "http://www.alextu.com/blog/"
-  ["profile_image_url"]=> string(49) "http://tp4.sinaimg.cn/1442733375/50/40006208139/1"
-  ["profile_url"]=> string(9) "523416278"
-  ["domain"]=>  string(7) "alextus"
-  ["weihao"]=>  string(9) "523416278"
-  ["gender"]=> string(1) "m"
-  ["followers_count"]=> int(68)
-  ["friends_count"]=> int(24)
-  ["avatar_large"]=>  string(50) "http://tp4.sinaimg.cn/1442733375/180/40006208139/1"
-  ["avatar_hd"]=>  string(50) "http://tp4.sinaimg.cn/1442733375/180/40006208139/1"
-
-			 
-			 */
-			
-			 $rs=$this->userm->addWeibo($result);
-			 if($rs==1){
-				//已注册，已完善基本账号
-				 
-			 }else{
-				//第一次注册	 
-			 }
-			// echo  $result["id"];
-			//	var_dump($result);  
-			$this->smarty->view('test/loginEnd.html');
-
-		}else{
-			  header("Location: $login_url"); 
-			
-		}
+			 var_dump($result); 
 		
-		 
- }
+		 }else{ 
+		
+		
+				$login_url=$this->sina->login_url($callback_url); 
+		
+				if(isset($_GET['code']) && $_GET['code']!=''){ 
+		
+				
+					 $result=$this->sina->access_token($callback_url, $_GET['code']); 
+				} 
+		
+				 if(isset($result['access_token']) && $result['access_token']!=''){ 
+					 $_SESSION['sina_t']=$result['access_token'];
+					//echo '授权完成，请记录<br/>access token：<input size="50" value="',$result['access_token'],'">';
+					
+					 $this->sina->iniToken($_SESSION['sina_t']);
+					 //获取登录用户id 
+					 $sina_uid=$this->sina->get_uid(); 
+					 $uid=$sina_uid['uid']; 
+				
+					 //获取登录用户信息 
+					 $result=$this->sina->show_user_by_id($uid); 
+					 $rs=$this->userm->addWeibo($result);
+					 if($rs==1){
+						//已注册，已完善基本账号
+						 
+					 }else{
+						//第一次注册	 
+					 }
+					// echo  $result["id"];
+					//	var_dump($result);  
+					$this->smarty->view('user.otherLoginEnd.html');
+		
+				}else{
+					  header("Location: $login_url"); 
+					
+				} 
+		 }
 
 	}
+	
+	private function weixinIni(){
+		 $this->input->set_cookie("access_token","",0);
+		 $this->input->set_cookie("openid","",0);
+		 $this->input->set_cookie("refresh_token","",0);
+		 $this->input->set_cookie("state","",0);
+		
+	}
+	private function weixinLogined($access_token,$openid,$msg){
+		$d=$this->weixin->getUserInfo($access_token,$openid); 
+		if(!isset($d["openid"])){
+			echo "授权失败，请稍后重试,$msg";
+			echo "<br/>";
+			
+			print_r($d);
+			
+			$this->weixinIni();
+			exit;
+		}else{
+			$userData=$this->userm->addWeixin($d);
+			if(!$userData){ 
+				echo "登陆失败，请稍后重试,$msg";
+				exit;
+			}	
+		}
+	}
+	public function weixinLogin(){
+	
+		/* 如果是第一次请求，设置$state */
+		$state = md5("alextu");
+		$login_url=$this->weixin->get_login_url($state);   //登陆地址
+
+
+		$access_token =$this->input->cookie("access_token");
+		$openid       =$this->input->cookie("openid");
+		$refresh_token=$this->input->cookie("refresh_token");
+		if($access_token!="" && $openid!=""){ 
+			//已经登录
+			$this->weixinLogined($access_token,$openid,1); 
+			
+		}else{
+			//access_token 失效， 但是已请求过
+			if($refresh_token!=""){
+
+				$result= $this->weixin->get_refresh_data($refresh_token); 
+				
+				if(isset($result["access_token"])){ 
+					$this->weixin->iniTokenData($result);
+					$this->weixinLogined($result['access_token'],$result['openid'],2); 
+				}else{
+					$this->weixinIni();
+					header("Location: $login_url");exit;
+				}
+
+			}else{
+
+				$stateG=$this->input->get('state');
+				$code=$this->input->get('code');
+				
+				if($code){ 
+					if($stateG!=$state){
+						echo "参数错误2~"; exit;
+					}else{
+						$result= $this->weixin->get_access_token($code);
+						if(isset($result["access_token"])){ 
+							
+							$this->weixin->saveUserData($result);
+							$this->weixinLogined($result['access_token'],$result['openid'],3); 
+							//获取用户信息
+						}else{
+							//分析错误原因
+							echo "授权失败，请稍后重试4";exit;
+						}
+					}
+						  
+				} else{
+					 header("Location: $login_url"); 
+					 exit;
+				}
+			}
+		}
+		
+		
+		$this->smarty->view('user.otherLoginEnd.html');
+		
+	}
+	
+	
 }
 

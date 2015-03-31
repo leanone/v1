@@ -1,0 +1,207 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<link rel="stylesheet" type="text/css" href="/public/css/mobile.css">
+<script src="/public/js/jquery.min.js"></script>
+
+<script>
+
+var phoneWidth = parseInt(window.screen.width);
+var phoneHeight = parseInt(window.screen.height);
+var phoneScale = phoneWidth/640;
+
+var ua = navigator.userAgent;
+if (/Android (\d+\.\d+)/.test(ua)){
+	var version = parseFloat(RegExp.$1);
+	// andriod 2.3
+	if(version>2.3){
+		document.write('<meta name="viewport" content="width=640, minimum-scale = '+phoneScale+', maximum-scale = '+phoneScale+', target-densitydpi=device-dpi">');
+	// andriod 2.3以上
+	}else{
+		document.write('<meta name="viewport" content="width=640, target-densitydpi=device-dpi">');
+	}
+	// 其他系统
+} else {
+	document.write('<meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi">');
+}
+
+</script>
+</head>
+
+<body>
+    <div class="warpe">
+    	<div class="heard">
+        	<p><input type="text" class="text" value="我的画布" /><span><input type="button" class="button" onClick="dianji()" value="点击修改" /></span></p>
+        </div>
+	</div>
+    
+    <div class="main">
+		
+        <div class="m_one">
+        	<div class="one">1</div>
+        	<div class="one_1">痛点的场景描述+痛苦程度</div>
+            <div class="clear"></div>
+            <div class="one_2">
+              <textarea name="h_one" placeholder="通过描述一个能够让人们能对痛点产生共鸣的场景来说明你要解决的问题">
+</textarea>
+
+			<div class="clear"></div>
+            
+            <div class="one_3"> 
+           		 <a><span>痛苦程度（1-5）：</span><input type="text" /></a>
+                  <a><span style="color:#FFF;">痛苦程度（1-5）：</span><b>  1,可以忍受；5,必须解决</b></a>
+            </div>
+            </div>
+            
+           	
+        </div>    
+			
+            
+          <div class="clear"></div>
+          
+          <div class="m_one m_two">
+        	<div class="one">2</div>
+        	<div class="one_1">这个痛点和你有什么联系？</div>
+            <div class="clear"></div>
+            <div class="one_2">
+              <textarea name="h_one" placeholder="是你自己亲身经历的痛点吗？你是否深入了解过这个行业？是否有切身体会？是否和大量（50+）潜在用户有深入沟通？">
+</textarea>
+              <div class="clear"></div>
+            
+           
+</div>
+            
+            <div class="clear"></div>
+          
+          <div class="m_one m_three">
+        	<div class="one">3</div>
+        	<div class="one_1">产品独特定位</div>
+            <div class="clear"></div>
+            <div class="one_2">
+              <textarea name="h_one" placeholder="要包括以下元素：针对什么人？什么问题？你的解决方案具体的形式是怎样的？和现有方案有什么差异性？">
+</textarea>
+
+			<div class="clear"></div>
+            
+           
+            </div>
+            
+            
+             <div class="clear"></div>
+          
+          <div class="m_one m_three">
+        	<div class="one">4</div>
+        	<div class="one_1">用户细分+市场规模估算</div>
+            <div class="clear"></div>
+            <div class="one_2 one_5">
+              <textarea name="h_one" placeholder="你如何定义你的潜在用户？地区分布？城市？性别？收入？所属行业？公司规模？人格特点？爱好？婚姻状况？有孩子？">
+</textarea>
+
+       
+            </div>
+            <div class="one_2 one_5 one_51">
+              <textarea name="h_one" placeholder="规模估算有2种方式：按潜在用户量（2C：100万-5000万人；2B：100-10万家），或按市场经济规模（10亿-1万亿/年 ）">
+</textarea>
+ 
+            </div>
+            
+           	
+        </div>      
+  
+  <div class="clear"></div>
+          
+          <div class="m_one m_three1">
+        	<div class="one">5</div>
+        	<div class="one_1">你的团队</div>
+            <div class="clear"></div>
+            <div class="one_2 one_5 one_52">
+              <ul>
+              	<li class="one_li">你是否全职：</li>
+                <li><input type="text" /></li>
+              </ul>
+              <ul>
+              	<li  class="one_li">现在团队人数：</li>
+                <li><input type="text" /></li>
+              </ul>
+       
+       		<ul>
+              	<li class="one_li">拿到投资后多久全职：</li>
+                <li><input type="text" /></li>
+              </ul>
+       
+      		 <ul>
+              	<li style="border:none; border-right:1px solid #999;" class="one_li">现在却什么合伙人：</li>
+                <li style="border:none;"><input type="text" /></li>
+              </ul>
+       
+       
+            </div>
+            <div class="one_2 one_5 one_51 one_53">
+              <textarea name="h_one" placeholder="你毕业的大学，工作过的NB公司，做过的NB事儿，和任何你干过值得你骄傲的事儿~">
+</textarea>
+ 
+            </div>
+            
+           	
+        </div>      
+  
+         
+          <div class="clear"></div>
+          
+          <div class="m_one m_three1">
+        	<div class="one">6</div>
+        	<div class="one_1">如何垄断或建立门槛</div>
+            <div class="clear"></div>
+            <div class="one_2 one_5 ">
+            <div class="one_5l">
+             	优势:
+             </div>
+       		<div class="one_5r">
+             	  <textarea name="h_one" placeholder="比如：已经拥有大量用户、有专利技术、团队的专业知识、团队的行业经验等">
+</textarea>
+             </div>
+       			
+            </div>
+            <div class="one_2 one_5 one_51 ">
+             <div class="one_5l">
+             方法:
+             </div>
+ 			<div class="one_5r">
+           <textarea name="h_one" placeholder="比如：如何能快速发展用户？如何能产生用户粘性（迁移成本）？如何面对后来的竞争者？对复制者的战略是什么？">
+</textarea>   
+             </div>
+                    
+            </div>
+            
+           	
+        </div> 
+        
+        
+        
+        
+        <div class="btn">
+        	<a href="#">保存</a>
+        
+        </div>        
+    </div>
+    
+      <script>
+	   
+	  
+		function dianji (){
+			
+				$('.text').focus()
+				
+			
+			}
+		
+		
+	
+		
+	
+		
+	</script>
+</body>
+</html>
