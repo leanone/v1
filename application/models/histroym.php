@@ -38,7 +38,19 @@ AddIP
 			return false;	
 		}
      }
-
+	 function getList($Uid){
+		$d=array();
+		$i=0;
+		$sql="select * from ".$this->db."    order by StartTime desc";
+		$query=$this->db->query($sql);
+			
+		foreach ($query->result_array() as $row){
+			
+			$i++;
+			$d[$i]=	$row[];  
+		}
+		return  $d; 
+	 }
 	 
 	 function publish($data){
 		$this->db->set($data);
@@ -51,10 +63,6 @@ AddIP
 
 		return $this->getInfo($ID);
 	 }
-
-
-
-
 
 	 /*
 	 用户数据初始化
